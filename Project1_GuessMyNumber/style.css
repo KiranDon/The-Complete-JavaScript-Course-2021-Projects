@@ -1,0 +1,88 @@
+html
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    background-color: #222;
+    color: white;
+    font-size: 30px;
+}
+header
+{
+    position: relative;
+    height: 30vh;
+    border-bottom: 4px solid white;
+}
+.again
+{
+    position: absolute;
+    top: 0;
+    font-size: 25px;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+.number
+{
+    width: 60px;
+    background-color: white;
+    font-size: 40px;
+    color: black;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+}
+.box
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.left
+{
+    width: 35%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 30px;
+}
+.right
+{
+    width: 35%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+.inp
+{
+    width: 80px;
+    height: 80px;
+    font-size: 40px;
+    border: 3px solid white;
+    border-radius: 3px;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    box-shadow: 5px 5px 10px rgba(143, 125, 125, 0.5);
+}
+.check
+{
+    font-size: 25px;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
