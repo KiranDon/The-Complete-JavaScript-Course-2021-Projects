@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Window</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+    <div class="buttons">
+        <button class="openModal" data-modal="modal1">Open Modal 1</button>
+        <button class="openModal" data-modal="modal2">Open Modal 2</button>
+        <button class="openModal" data-modal="modal3">Open Modal 3</button>
+    </div>
+
+    <div class="modal hidden" id="modal1">
+        <button class="closeButton">&times;</button>
+        <h2>I am a modal window 1.😄</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ex, nostrum natus quae aperiam nihil soluta accusamus quam illo animi atque commodi, vitae dolorem id nisi laborum maiores reprehenderit sed?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis, ab. Aspernatur est neque, laborum officiis eaque placeat, itaque omnis tempore, quidem repudiandae nihil suscipit. Quisquam ut molestiae sequi sunt rerum!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ex, nostrum natus quae aperiam nihil soluta accusamus quam illo animi atque commodi, vitae dolorem id nisi laborum maiores reprehenderit sed?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis, ab. Aspernatur est neque, laborum officiis eaque placeat, itaque omnis tempore, quidem repudiandae nihil suscipit. Quisquam ut molestiae sequi sunt rerum!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ex, nostrum natus quae aperiam nihil soluta accusamus quam illo animi atque commodi, vitae dolorem id nisi laborum maiores reprehenderit sed?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis, ab. Aspernatur est neque, laborum officiis eaque placeat, itaque omnis tempore, quidem repudiandae nihil suscipit. Quisquam ut molestiae sequi sunt rerum!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ex, nostrum natus quae aperiam nihil soluta accusamus quam illo animi atque commodi, vitae dolorem id nisi laborum maiores reprehenderit sed?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis, ab. Aspernatur est neque, laborum officiis eaque placeat, itaque omnis tempore, quidem repudiandae nihil suscipit. Quisquam ut molestiae sequi sunt rerum!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ex, nostrum natus quae aperiam nihil soluta accusamus quam illo animi atque commodi, vitae dolorem id nisi laborum maiores reprehenderit sed?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis, ab. Aspernatur est neque, laborum officiis eaque placeat, itaque omnis tempore, quidem repudiandae nihil suscipit. Quisquam ut molestiae sequi sunt rerum!</p>
+        
+    </div>
+    <div class="modal hidden" id="modal2">
+        <button class="closeButton">&times;</button>
+        <h2>I am a modal window 2.😄</h2>
+        <div class="modalBody">
+            <img src="fb.jpg" width="250px" height="250px">
+            <p>Lorem ipsum dolor sit amet consectetur   adipisicing elit. Corporis ex, nostrum    natus quae aperiam nihil soluta accusamus  quam illo animi atque commodi, vitae     dolorem id nisi laborum maiores     reprehenderit sed?Lorem ipsum dolor, sit    amet consectetur adipisicing elit.     Perferendis, ab. Aspernatur est neque,  laborum officiis eaque placeat, itaque   omnis tempore, quidem repudiandae nihil   suscipit. Quisquam ut molestiae sequi sunt    rerum!</p>
+        </div>
+        
+    </div>
+    <div class="modal hidden" id="modal3">
+        <button class="closeButton">&times;</button>
+        <h2>I am a modal window 3.😄</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia adipisci quam corrupti aspernatur possimus dolor ea ullam in laborum hic voluptatem explicabo doloribus fuga earum velit quae unde, impedit quod.</p>
+    </div>
+    <div class="overlay hidden"></div>
+    <div class="main"><h1>Modal window tutorial</h1></div>
+    <script src="script.js"></script>
+</body>
+</html>
