@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="icon" href="icon.png" type="image/png">
+</head>
+<body>
+  <div class="header">
+    <p>Login to get started.</p>
+    <img src="logo.png" class="logo">
+    <form class="login">
+      <input type="text" placeholder="USER" class="loginInput">
+      <input type="password" placeholder="PIN" class="loginInput">
+      <button class="loginButton">&rarr;</button>
+    </form>
+  </div>
+
+
+  <div class="main">
+    <div class="balance">
+      <div>
+        <p class="currentBalanceLabel">Current balance</p>
+        <p>As of <span class="date">27/03/2021</span></p>
+      </div>
+      <div>
+        <p class="currentBalance">1920$</p>
+      </div>
+    </div>
+    <div class="sections">
+      <div class="movements">
+        <div class="movementsRow">
+          <div class="movementType--withdraw">1 deposit</div>
+          <div class="movementValue">-50$</div>
+        </div>
+        <div class="movementsRow">
+          <div class="movementType--deposit">1 deposit</div>
+          <div class="movementValue">500$</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="operation operation--transfer">
+          <h2>Transfer money</h2>
+          <form class="form form--transfer">
+            <input type="text" class="form__input form__input--to" />
+            <input type="number" class="form__input form__input--amount" />
+            <button class="form__btn form__btn--transfer">&rarr;</button>
+            <label class="form__label">Transfer to</label>
+            <label class="form__label">Amount</label>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
+
+  
+
+<script src="script.js"></script>
+</body>
+</html>

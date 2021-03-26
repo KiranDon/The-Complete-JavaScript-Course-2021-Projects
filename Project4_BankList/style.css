@@ -1,0 +1,129 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body
+{
+  background-color: #f3f3f3;
+  font-family: 'Poppins', sans-serif;
+  padding: 10px 50px;
+}
+.header
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.header p
+{
+  font-size: 25px;
+  font-weight: 500;
+}
+.logo
+{
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.login
+{
+  display: flex;
+}
+.loginInput::placeholder
+{
+  font-size: 12px;
+}
+.loginInput
+{
+  text-align: center;
+  width: 100px;
+  padding: 2px 15px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  margin: 0 3px;
+  font-size: 20px;
+}
+.loginInput:focus
+{
+  border: 1px solid #fff;
+  outline: none;
+}
+.loginButton
+{
+  width: 50px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 30px;
+  cursor: pointer;
+}
+.main
+{
+  width: 80%;
+  height: 85vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30px;
+}
+.sections
+{
+  display: flex;
+}
+.balance
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 80px;
+}
+.currentBalanceLabel
+{
+  font-size: 23px;
+}
+.currentBalance
+{
+  font-size: 40px;
+  padding: 5px;
+}
+.movements
+{
+  width: 60%;
+  height: 60vh;
+  background-color: white;
+  overflow-y: scroll;
+  border-radius: 10px;
+}
+.movementsRow
+{
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  padding: 20px 30px;
+  align-items: center;
+  border-bottom: 2px solid #eee;
+  border-radius: 5px;
+
+}
+.movementType--deposit
+{
+  background-image: linear-gradient(to top left, #39b385, #9be15d);
+  border-radius: 10px;
+  padding: 2px 8px;
+}
+.movementType--withdraw
+{
+  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+  border-radius: 10px;
+  padding: 2px 8px;
+}
+.movementValue
+{
+  font-size: 20px;
+}
