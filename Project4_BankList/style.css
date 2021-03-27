@@ -1,129 +1,240 @@
 *
 {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 body
 {
   background-color: #f3f3f3;
-  font-family: 'Poppins', sans-serif;
-  padding: 10px 50px;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.header
+.nav
 {
   display: flex;
   align-items: center;
-  justify-content: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 40px;
 }
-.header p
+.welcome
 {
   font-size: 25px;
-  font-weight: 500;
 }
 .logo
 {
   height: 50px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 }
-.login
+.login_details
 {
-  display: flex;
-}
-.loginInput::placeholder
-{
-  font-size: 12px;
-}
-.loginInput
-{
-  text-align: center;
-  width: 100px;
-  padding: 2px 15px;
+  width: 120px;
+  padding: 8px;
   border-radius: 20px;
-  outline: none;
   border: none;
+  outline: none;
+  text-align: center;
+  font-size: 18px;
   margin: 0 3px;
-  font-size: 20px;
 }
-.loginInput:focus
+.login_details:focus
 {
-  border: 1px solid #fff;
-  outline: none;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
 }
-.loginButton
+.login_details::placeholder, .operationsForm::placeholder
 {
-  width: 50px;
+  color: #d6d3d3;
+  font-size: 15px;
+}
+.login_button
+{
+  background: transparent;
+  cursor: pointer;
   border: none;
   outline: none;
-  background-color: transparent;
   font-size: 30px;
-  cursor: pointer;
 }
-.main
+.app
 {
   width: 80%;
-  height: 85vh;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 30px;
+  margin: 30px auto 0 auto;
+  padding: 16px 32px;
 }
-.sections
+.current_balance
 {
-  display: flex;
-}
-.balance
-{
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  height: 80px;
 }
-.currentBalanceLabel
+.cd
 {
-  font-size: 23px;
+  margin-top: 5px;
+  color: #888;
 }
-.currentBalance
+h2
+{
+  font-size: 20px;
+}
+.current_balance_value
 {
   font-size: 40px;
-  padding: 5px;
+}
+.operations
+{
+  display: flex;
+  margin-top: 30px;
+}
+.operations .left
+{
+  width: 60%;
+  margin: 5px;
+}
+.operations .right
+{
+  width: 40%;
+  margin: 5px;
 }
 .movements
 {
-  width: 60%;
-  height: 60vh;
+  display: flex;
+  flex-direction: column;
   background-color: white;
-  overflow-y: scroll;
   border-radius: 10px;
+  height: 70vh;
+  overflow-y: scroll;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
 }
-.movementsRow
+.movement_row
 {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  height: 70px;
-  padding: 20px 30px;
   align-items: center;
-  border-bottom: 2px solid #eee;
-  border-radius: 5px;
-
+  border-bottom: 1px solid #eee;
+  padding: 25px 40px;
 }
-.movementType--deposit
+.movement_type-deposit
 {
   background-image: linear-gradient(to top left, #39b385, #9be15d);
   border-radius: 10px;
-  padding: 2px 8px;
+  padding: 1px 6px;
+  font-size: 12px;
+  color: #fff;
+  text-transform: uppercase;
 }
-.movementType--withdraw
+.movement_type-withdraw
 {
   background-image: linear-gradient(to top left, #e52a5a, #ff585f);
   border-radius: 10px;
-  padding: 2px 8px;
+  padding: 1px 6px;
+  font-size: 12px;
+  color: #fff;
+  text-transform: uppercase;
 }
-.movementValue
+.operation
 {
+  width: 100%;
+  padding: 25px 25px 35px 25px;
+  border-radius: 15px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+}
+.transfer
+{
+  margin-top: 0;
+  background-image: linear-gradient(to top left, #ffb003, #ffcb03);
+}
+.loan
+{
+  background-image: linear-gradient(to top left, #39b385, #9be15d);
+}
+.close_account
+{
+  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+}
+.formInput
+{
+  width: 100px;
+  padding: 5px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.formInput:focus
+{
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+}
+.opeartionsButton
+{
+  width: 40px;
   font-size: 20px;
+  background-color: #fff;
+  border-radius: 7px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.opeartionsButton:hover
+{
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+.login_button:hover
+{
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4));
+}
+.summary
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.summary .left
+{
+  width: 60%;
+  padding: 10px;
+  display: flex;
+  align-items: baseline;
+}
+.summary_label
+{
+  margin: 10px;
+  font-size: 15px;
+}
+.summary_value
+{
+  font-size: 25px;
+  margin-right: 20px;
+}
+.in, .int
+{
+  color: #66c873;
+}
+.out
+{
+  color: #f5465d;
+}
+.button_sort
+{
+  margin-left: auto;
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.summary .left
+{
+  display: flex;
+  justify-content: baseline;
+}
+.operationsFormInput::placeholder
+{
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  font-size: 12px;
+}
+.operationsFormInput
+{
+  text-align: center;
 }
