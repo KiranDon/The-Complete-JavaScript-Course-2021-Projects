@@ -88,22 +88,22 @@
           <form class="operationsForm">
             <input type="text" class="formInput transferTo operationsFormInput" placeholder="To account">
             <input type="number" class="formInput transferAmount operationsFormInput" placeholder="Amount">
-            <button class="opeartionsButton">&rarr;</button>
+            <button class="opeartionsButton transferButton">&rarr;</button>
           </form>
         </div>
         <div class="operation loan">
           <h2>Request loan</h2>
           <form class="operationsForm">
             <input type="text" class="formInput loanAmount operationsFormInput" placeholder="Amount">
-            <button class="opeartionsButton">&rarr;</button>
+            <button class="opeartionsButton loanButton">&rarr;</button>
           </form>
         </div>
         <div class="operation close_account">
           <h2>Close account</h2>
           <form class="operationsForm">
             <input type="text" class="formInput closeAccount operationsFormInput" placeholder="User Name">
-            <input type="number" class="formInput closeAccountPin operationsFormInput" placeholder="Pin">
-            <button class="opeartionsButton">&rarr;</button>
+            <input type="password" class="formInput closeAccountPin operationsFormInput" placeholder="Pin">
+            <button class="opeartionsButton closeButton">&rarr;</button>
           </form>
         </div>
       </div>
@@ -123,6 +123,7 @@
       </div>
       <div class="right">
         <p>You will be logged out in <span class="logout_timer">10:00</span></p>
+        <button class="button_logout">Logout</button>
       </div>
     </div>
     <!-- Summary Section -->

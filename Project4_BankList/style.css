@@ -57,6 +57,7 @@ body
   width: 80%;
   margin: 30px auto 0 auto;
   padding: 16px 32px;
+  opacity: 0;
 }
 .current_balance
 {
@@ -237,4 +238,16 @@ h2
 .operationsFormInput
 {
   text-align: center;
+}
+.button_logout
+{
+  float: right;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: #e52a5a;
+  border-radius: 10px;
+  width: 60px;
+  padding: 5px;
+  color: white;
 }
