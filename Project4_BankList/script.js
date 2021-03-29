@@ -7,33 +7,75 @@ const account1 = {
     userName: 'kiran',
     pin: 888,
     interestRate: 1.5,
-    movements: [10, 100, 400, -30, 90, -300, 500, -50, 900, -500, -100]
+    movements: [10, 100, 400, -30, 90, -300, 500, -50, 900, -500, -100],
+    movementsTime: ["2021-03-29T13:32:43.869Z", "2021-03-29T13:32:43.869Z",
+                    "2021-03-27T13:32:43.869Z", "2021-03-26T13:32:43.869Z",
+                    "2021-03-23T13:32:43.869Z", "2021-03-21T13:32:43.869Z",
+                    "2021-03-18T13:32:43.869Z", "2021-03-15T13:32:43.869Z",
+                    "2021-03-12T13:32:43.869Z", "2021-03-10T13:32:43.869Z",
+                    "2021-02-29T13:32:43.869Z"],
+    native:'en-US'
 }
 const account2 = {
     userName: 'harsha',
     pin: 111,
     interestRate: 1.5,
-    movements: [1000, -400, 200, -11 -300, 900, -100, 5000, -500, 500, -1500, 1000]
+    movements: [1000, -400, 200, -11 -300, 900, -100, 5000, -500, 500, -1500, 1000],
+    movementsTime: ["2021-03-29T13:32:43.869Z", "2021-03-28T13:32:43.869Z",
+                    "2021-03-27T13:32:43.869Z", "2021-03-23T13:32:43.869Z",
+                    "2021-03-20T13:32:43.869Z", "2021-03-19T13:32:43.869Z",
+                    "2021-03-15T13:32:43.869Z", "2021-03-15T13:32:43.869Z",
+                    "2021-03-13T13:32:43.869Z", "2021-03-12T13:32:43.869Z",
+                    "2021-03-10T13:32:43.869Z", "2021-03-09T13:32:43.869Z"],
+    native: 'en-US'
 }
 const account3 = {
     userName: 'lileep',
     pin: 222,
     interestRate: 1.5,
-    movements: [950, -1590, -330, -290, -800, 890, -50, 1900, 500, -100, -990]
+    movements: [950, -1590, -330, -290, -800, 890, -50, 1900, 500, -100, -990],
+    movementsTime: ["2021-03-29T13:32:43.869Z", "2021-03-29T13:32:43.869Z",
+                    "2021-03-27T13:32:43.869Z", "2021-03-26T13:32:43.869Z",
+                    "2021-03-23T13:32:43.869Z", "2021-03-21T13:32:43.869Z",
+                    "2021-03-18T13:32:43.869Z", "2021-03-15T13:32:43.869Z",
+                    "2021-03-12T13:32:43.869Z", "2021-03-10T13:32:43.869Z",
+                    "2021-02-29T13:32:43.869Z"],
+    native: 'en-US'
 }
 const account4 = {
     userName: 'tharun',
     pin: 333,
     interestRate: 1.5,
-    movements: [190, -800, 80, -50, 1900, 500, -100, -990, -50, 900, -500, -100]
+    movements: [190, -800, 80, -50, 1900, 500, -100, -990, -50, 900, -500, -100],
+    movementsTime: ["2021-03-29T13:32:43.869Z", "2021-03-28T13:32:43.869Z",
+                    "2021-03-27T13:32:43.869Z", "2021-03-23T13:32:43.869Z",
+                    "2021-03-20T13:32:43.869Z", "2021-03-19T13:32:43.869Z",
+                    "2021-03-15T13:32:43.869Z", "2021-03-15T13:32:43.869Z",
+                    "2021-03-13T13:32:43.869Z", "2021-03-12T13:32:43.869Z",
+                    "2021-03-10T13:32:43.869Z", "2021-03-09T13:32:43.869Z"],
+    native: 'en-US'
 }
 const account5 = {
     userName: 'nikhil',
     pin: 444,
     interestRate: 1.5,
-    movements: [100, 450, 890, -50, -1900, 500, -100, -990 -50, 900, -500, 1000, -1000, 500]
+    movements: [100, 450, 890, -50, -1900, 500, -100, -990 -50, 900, -500, 1000, -1000, 500],
+    movementsTime: ["2021-03-29T13:32:43.869Z", "2021-03-23T13:32:43.869Z",
+                    "2021-03-22T13:32:43.869Z", "2021-03-20T13:32:43.869Z",
+                    "2021-03-15T13:32:43.869Z", "2021-03-10T13:32:43.869Z",
+                    "2021-03-10T13:32:43.869Z", "2021-03-09T13:32:43.869Z",
+                    "2021-03-05T13:32:43.869Z", "2021-03-03T13:32:43.869Z",
+                    "2021-03-01T13:32:43.869Z", "2021-03-01T13:32:43.869Z",
+                    "2021-02-29T13:32:43.869Z", "2021-02-25T13:32:43.869Z"],
+    native: 'en-US'
 }
 const accounts = [account1, account2, account3, account4, account5];
+
+//reversing the times of movements
+accounts.forEach(acc => {
+    acc.movementsTime.reverse();
+});
+
 const calculateBalance = function(movs){
         let balance = 0;
         movs.forEach(function(mov){
@@ -42,15 +84,44 @@ const calculateBalance = function(movs){
         return balance;
 };
 
-const updateMovements = function(movementsArr, sorted = false){
+const updateMovements = function(acc, sorted = false){
     movements.innerHTML = '';
 
-    const movs = sorted ? movementsArr.slice().sort((a, b) => a-b) : movementsArr;
+    const movs = sorted ? acc.movements.slice().sort((a, b) => a-b) : acc.movements;
     
     movs.forEach(function(mov, index){
         const type = mov>0?'deposit':'withdraw';
+
+        const dateOfTransaction = new Date(acc.movementsTime[index]);
+        const date = String(dateOfTransaction.getDate()).padStart(2, '0');
+        const month = String(dateOfTransaction.getMonth()+1).padStart(2, '0');
+        const year = dateOfTransaction.getFullYear();
+
+        const now = new Date();
+        const thatDate = new Date(acc.movementsTime[index]);
+        const daysPassed = Math.trunc((now-thatDate)/(1000 * 60 * 60 * 24));
+        console.log(daysPassed);
+        let movementDateString = '';
+        if(daysPassed===0)
+        {
+            movementDateString = 'Today';
+        }
+        else if(daysPassed===1)
+        {
+            movementDateString = 'Yesterday';
+        }
+        else if(daysPassed>=2 && daysPassed<=5)
+        {
+            movementDateString = `${daysPassed} days ago.`;
+        }
+        else
+        {
+            movementDateString = `${date}/${month}/${year}`;
+        }
+
         let html = `<div class="movement_row">
                     <div class="movement_type-${type}">${index+1} ${type}</div>
+                    <div class="movements__date">${movementDateString}</div>
                     <div class="movement_value">${mov}$</div>
                 </div>`;
         movements.insertAdjacentHTML('afterbegin', html);
@@ -82,8 +153,16 @@ const updateUi = function(acc){
         document.querySelector('.app').style.opacity = 100;
         acc.balance = calculateBalance(acc.movements);
         document.querySelector('.current_balance_value').textContent = `${acc.balance}$`;
-        updateMovements(acc.movements);
+        updateMovements(currentAccount);
         calcDisplaySummary(acc);
+
+        //time
+        const now = new Date();
+        const date = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth()+1).padStart(2, '0');
+        const year = now.getFullYear();
+        
+        document.querySelector('.current_date').textContent = `${date}/${month}/${year}`;
     }
     else
     {
@@ -137,7 +216,7 @@ document.querySelector('.button_logout').addEventListener('click', logout);
 
 var sortedState = false;
 const sortMovs = function(){
-    updateMovements(currentAccount.movements, !sortedState);
+    updateMovements(currentAccount, !sortedState);
     sortedState = !sortedState;
 };
 document.querySelector('.button_sort').addEventListener('click', sortMovs);
@@ -153,6 +232,11 @@ document.querySelector('.transferButton').addEventListener('click', function(e)
     {
         currentAccount.movements.push(-amount);
         receiverAccount.movements.push(amount);
+
+        currentAccount.movementsTime.push(new Date().toISOString());
+        receiverAccount.movementsTime.push(new Date().toISOString());
+
+
         console.log(currentAccount, receiverAccount);
         updateUi(currentAccount);
         console.log(currentAccount.balance, calculateBalance(currentAccount.movements));
