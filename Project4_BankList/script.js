@@ -20,7 +20,7 @@ const account2 = {
     userName: 'harsha',
     pin: 111,
     interestRate: 1.5,
-    movements: [1000, -400, 200, -11 -300, 900, -100, 5000, -500, 500, -1500, 1000],
+    movements: [1000, -400, 200, -11, -300, 900, -100, 5000, -500, 500, -1500, 1000],
     movementsTime: ["2021-03-29T13:32:43.869Z", "2021-03-28T13:32:43.869Z",
                     "2021-03-27T13:32:43.869Z", "2021-03-23T13:32:43.869Z",
                     "2021-03-20T13:32:43.869Z", "2021-03-19T13:32:43.869Z",
@@ -59,7 +59,7 @@ const account5 = {
     userName: 'nikhil',
     pin: 444,
     interestRate: 1.5,
-    movements: [100, 450, 890, -50, -1900, 500, -100, -990 -50, 900, -500, 1000, -1000, 500],
+    movements: [100, 450, 890, -50, -1900, 500, -100, -990, -50, 900, -500, 1000, -1000, 500],
     movementsTime: ["2021-03-29T13:32:43.869Z", "2021-03-23T13:32:43.869Z",
                     "2021-03-22T13:32:43.869Z", "2021-03-20T13:32:43.869Z",
                     "2021-03-15T13:32:43.869Z", "2021-03-10T13:32:43.869Z",
@@ -88,6 +88,7 @@ const updateMovements = function(acc, sorted = false){
     movements.innerHTML = '';
 
     const movs = sorted ? acc.movements.slice().sort((a, b) => a-b) : acc.movements;
+    const movsTimes = sorted ? acc.movementsTime.sort() : acc.movementsTime;
     
     movs.forEach(function(mov, index){
         const type = mov>0?'deposit':'withdraw';
@@ -98,9 +99,9 @@ const updateMovements = function(acc, sorted = false){
         const year = dateOfTransaction.getFullYear();
 
         const now = new Date();
-        const thatDate = new Date(acc.movementsTime[index]);
-        const daysPassed = Math.trunc((now-thatDate)/(1000 * 60 * 60 * 24));
-        console.log(daysPassed);
+        const thatDate = new Date(movsTimes[index]);
+        const daysPassed = Math.round((now-thatDate)/(1000 * 60 * 60 * 24));
+        // console.log(daysPassed);
         let movementDateString = '';
         if(daysPassed===0)
         {
@@ -136,13 +137,13 @@ const calcDisplaySummary = function(acc){
  document.querySelector('.in').textContent = `${incoming}$`;
  document.querySelector('.out').textContent = `${Math.abs(outgoing)}$`;
  document.querySelector('.int').textContent = `${interest}$`;
- console.log(incoming, outgoing, interest, incoming+outgoing);
+//  console.log(incoming, outgoing, interest, incoming+outgoing);
 };
 
 const updateUi = function(acc){
     if(acc)
     {
-        console.log("updated the ui");
+        // console.log("updated the ui");
 
         //clearing the input feilds
         userNameInput.value = userPinInput.value = '';
@@ -153,7 +154,7 @@ const updateUi = function(acc){
         document.querySelector('.app').style.opacity = 100;
         acc.balance = calculateBalance(acc.movements);
         document.querySelector('.current_balance_value').textContent = `${acc.balance}$`;
-        updateMovements(currentAccount);
+        // updateMovements(currentAccount);
         calcDisplaySummary(acc);
 
         //time
@@ -161,8 +162,13 @@ const updateUi = function(acc){
         const date = String(now.getDate()).padStart(2, '0');
         const month = String(now.getMonth()+1).padStart(2, '0');
         const year = now.getFullYear();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+
         
-        document.querySelector('.current_date').textContent = `${date}/${month}/${year}`;
+        document.querySelector('.current_date').textContent = `${date}/${month}/${year} ${hours}:${minutes}`;
+
+        updateMovements(acc);
     }
     else
     {
@@ -177,7 +183,7 @@ loginButton.addEventListener('click', function(e){
     let user = userNameInput.value;
     let pin = Number(userPinInput.value);
 
-    console.log(user, pin);
+    // console.log(user, pin);
     currentAccount = accounts.find(acc => acc.userName===user);
     if(!currentAccount)
     {
@@ -191,8 +197,9 @@ loginButton.addEventListener('click', function(e){
     }
     else
     {
-        console.log(currentAccount);
+        // console.log(currentAccount);
         updateUi(currentAccount);
+        // updateMovements(currentAccount);
     }
     // accounts.forEach(function(account){
     //     if(account.userName===user && account.pin===pin)
@@ -206,7 +213,7 @@ loginButton.addEventListener('click', function(e){
     // });
 });
 const logout = function(){
-    console.log('logged out');
+    // console.log('logged out');
     currentAccount = undefined;
     updateUi(currentAccount);
     document.querySelector('.welcome').textContent = `Login to get started.`;
@@ -226,20 +233,22 @@ document.querySelector('.transferButton').addEventListener('click', function(e)
     e.preventDefault();
     let receiver = document.querySelector('.transferTo').value;
     let amount = Number(document.querySelector('.transferAmount').value);
-    console.log(receiver, amount);
+    // console.log(receiver, amount);
     const receiverAccount = accounts.find(account => account.userName===receiver);
-    if(receiverAccount && amount <= currentAccount.balance)
+    if(receiverAccount && amount && amount <= currentAccount.balance)
     {
         currentAccount.movements.push(-amount);
         receiverAccount.movements.push(amount);
 
-        currentAccount.movementsTime.push(new Date().toISOString());
-        receiverAccount.movementsTime.push(new Date().toISOString());
+        let transactTime = new Date().toISOString();
+        currentAccount.movementsTime.push(transactTime);
+        receiverAccount.movementsTime.push(transactTime);
+        // updateMovements(currentAccount);
 
 
-        console.log(currentAccount, receiverAccount);
+        // console.log(currentAccount, receiverAccount);
         updateUi(currentAccount);
-        console.log(currentAccount.balance, calculateBalance(currentAccount.movements));
+        // console.log(currentAccount.balance, calculateBalance(currentAccount.movements));
 
 
         //clearing feilds
@@ -250,6 +259,10 @@ document.querySelector('.transferButton').addEventListener('click', function(e)
     else if(amount > currentAccount.balance)
     {
         alert("You does'nt have sufficient funds to transfer.");
+    }
+    else if(!amount)
+    {
+        alert("Please enter valid amount.");
     }
     else
     {
@@ -269,7 +282,7 @@ document.querySelector('.closeButton').addEventListener('click', function(e){
         accounts.splice(accounts.findIndex(acc => acc === currentAccount), 1);
         alert("Account deleted.");
         document.querySelector('.app').style.opacity = 0;
-        console.log(accounts);
+        // console.log(accounts);
         document.querySelector('.welcome').textContent = `Login to get started.`;
 
         //clearing feilds
@@ -297,8 +310,11 @@ document.querySelector('.loanButton').addEventListener('click', function(e){
     console.log(deposits, eligible);
     if(eligible)
     {
-        console.log("Eligible");
+        // console.log("Eligible");
         currentAccount.movements.push(loanAmount);
+
+        let transactTime = new Date().toISOString();
+        currentAccount.movementsTime.push(transactTime);
         updateUi(currentAccount);
 
         //clearing feilds
