@@ -88,7 +88,8 @@ const updateMovements = function(acc, sorted = false){
     movements.innerHTML = '';
 
     const movs = sorted ? acc.movements.slice().sort((a, b) => a-b) : acc.movements;
-    const movsTimes = sorted ? acc.movementsTime.sort() : acc.movementsTime;
+    const movsTimes = acc.movementsTime;
+    console.log(movsTimes);
     
     movs.forEach(function(mov, index){
         const type = mov>0?'deposit':'withdraw';
@@ -99,7 +100,7 @@ const updateMovements = function(acc, sorted = false){
         const year = dateOfTransaction.getFullYear();
 
         const now = new Date();
-        const thatDate = new Date(movsTimes[index]);
+        const thatDate = new Date(acc.movementsTime[index]);
         const daysPassed = Math.round((now-thatDate)/(1000 * 60 * 60 * 24));
         // console.log(daysPassed);
         let movementDateString = '';
@@ -162,8 +163,8 @@ const updateUi = function(acc){
         const date = String(now.getDate()).padStart(2, '0');
         const month = String(now.getMonth()+1).padStart(2, '0');
         const year = now.getFullYear();
-        const hours = now.getHours();
-        const minutes = now.getMinutes();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
 
         
         document.querySelector('.current_date').textContent = `${date}/${month}/${year} ${hours}:${minutes}`;
@@ -177,7 +178,7 @@ const updateUi = function(acc){
     }
 };
 
-var currentAccount;
+var currentAccount, timer;
 loginButton.addEventListener('click', function(e){
     e.preventDefault();
     let user = userNameInput.value;
@@ -199,6 +200,8 @@ loginButton.addEventListener('click', function(e){
     {
         // console.log(currentAccount);
         updateUi(currentAccount);
+        if(timer) clearInterval(timer);
+        timer = startLogoutTimer();
         // updateMovements(currentAccount);
     }
     // accounts.forEach(function(account){
@@ -255,6 +258,10 @@ document.querySelector('.transferButton').addEventListener('click', function(e)
         document.querySelector('.transferTo').value = document.querySelector('.transferAmount').value = '';
         document.querySelector('.transferTo').blur();
         document.querySelector('.transferAmount').blur();
+
+        //resetting the logout timer..
+        clearInterval(timer);
+        timer = startLogoutTimer();
     }
     else if(amount > currentAccount.balance)
     {
@@ -320,9 +327,37 @@ document.querySelector('.loanButton').addEventListener('click', function(e){
         //clearing feilds
         document.querySelector('.loanAmount').value = '';
         document.querySelector('.loanAmount').blur();
+
+        //resetting the logout timer..
+        clearInterval(timer);
+        timer = startLogoutTimer();
     }
     else
     {
         alert("You have'nt deposited any amount greater than 10 percent of requested amount.\nYour request for loan can't be processed.");
     }
 });
+
+//logout timer
+
+const startLogoutTimer = function(){
+    // clearInterval(timer);
+    let time = 20;
+    const tick = function(){
+        const min = String(Math.trunc(time/60)).padStart(2, 0);
+        const sec = String(Math.trunc(time%60)).padStart(2, 0);
+
+            document.querySelector('.logout_timer').textContent = `${min}:${sec}`;
+            
+            
+            if(time===0)
+            {
+                clearInterval(timer);
+                logout();
+            }
+            time--;
+        };
+    tick();
+    timer = setInterval(tick, 1000);
+    return timer;
+};
