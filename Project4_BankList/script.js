@@ -221,6 +221,7 @@ const logout = function(){
     // console.log('logged out');
     currentAccount = undefined;
     updateUi(currentAccount);
+    window.scrollTo(0,0);
     document.querySelector('.welcome').textContent = `Login to get started.`;
 
 };
@@ -298,6 +299,7 @@ document.querySelector('.closeButton').addEventListener('click', function(e){
         document.querySelector('.closeAccount').value = document.querySelector('.closeAccountPin').value = '';
         document.querySelector('.closeAccount').blur();
         document.querySelector('.closeAccountPin').blur();
+        window.scrollTo(0,0);
     }
     else if(account && account!==currentAccount.userName)
     {
