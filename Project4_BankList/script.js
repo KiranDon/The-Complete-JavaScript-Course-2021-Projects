@@ -69,12 +69,20 @@ const account5 = {
                     "2021-02-29T13:32:43.869Z", "2021-02-25T13:32:43.869Z"],
     native: 'en-US'
 }
-const accounts = [account1, account2, account3, account4, account5];
+var accounts = [account1, account2, account3, account4, account5];
 
 //reversing the times of movements
 accounts.forEach(acc => {
     acc.movementsTime.reverse();
 });
+
+// localStorage.setItem('banklist', JSON.stringify(accounts));
+let data = localStorage.getItem('banklist');
+data = JSON.parse(data);
+accounts = data===accounts ? accounts : data;
+// console.log(data)
+// accounts = data;
+// console.log(accounts);
 
 const formatNumber = (num) => new Intl.NumberFormat('en-IN').format(num);
 
@@ -204,6 +212,11 @@ loginButton.addEventListener('click', function(e){
         updateUi(currentAccount);
         if(timer) clearInterval(timer);
         timer = startLogoutTimer();
+        // let data = localStorage.getItem('banklist');
+        // data = JSON.parse(data);
+        // console.log(data)
+        // accounts = data;
+        // console.log(accounts);
         // updateMovements(currentAccount);
     }
     // accounts.forEach(function(account){
@@ -265,6 +278,12 @@ document.querySelector('.transferButton').addEventListener('click', function(e)
         //resetting the logout timer..
         clearInterval(timer);
         timer = startLogoutTimer();
+
+        //experimenting with local storage
+        localStorage.setItem('banklist', JSON.stringify(accounts));
+        // let data = localStorage.getItem('banklist');
+        // data = JSON.parse(data);
+        // console.log(data)
     }
     else if(amount > currentAccount.balance)
     {
@@ -300,6 +319,9 @@ document.querySelector('.closeButton').addEventListener('click', function(e){
         document.querySelector('.closeAccount').blur();
         document.querySelector('.closeAccountPin').blur();
         window.scrollTo(0,0);
+
+        // //localstorage
+        // localStorage.setItem('banklist', JSON.stringify(accounts));
     }
     else if(account && account!==currentAccount.userName)
     {
@@ -335,6 +357,12 @@ document.querySelector('.loanButton').addEventListener('click', function(e){
         //resetting the logout timer..
         clearInterval(timer);
         timer = startLogoutTimer();
+
+        //experimenting with local storage
+        localStorage.setItem('banklist', JSON.stringify(accounts));
+        // let data = localStorage.getItem('banklist');
+        // data = JSON.parse(data);
+        // console.log(data)
     }
     else
     {
