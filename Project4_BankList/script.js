@@ -76,6 +76,8 @@ accounts.forEach(acc => {
     acc.movementsTime.reverse();
 });
 
+const formatNumber = (num) => new Intl.NumberFormat('en-IN').format(num);
+
 const calculateBalance = function(movs){
         let balance = 0;
         movs.forEach(function(mov){
@@ -89,7 +91,7 @@ const updateMovements = function(acc, sorted = false){
 
     const movs = sorted ? acc.movements.slice().sort((a, b) => a-b) : acc.movements;
     const movsTimes = acc.movementsTime;
-    console.log(movsTimes);
+    // console.log(movsTimes);
     
     movs.forEach(function(mov, index){
         const type = mov>0?'deposit':'withdraw';
@@ -124,7 +126,7 @@ const updateMovements = function(acc, sorted = false){
         let html = `<div class="movement_row">
                     <div class="movement_type-${type}">${index+1} ${type}</div>
                     <div class="movements__date">${movementDateString}</div>
-                    <div class="movement_value">${mov}$</div>
+                    <div class="movement_value">${formatNumber(mov)}$</div>
                 </div>`;
         movements.insertAdjacentHTML('afterbegin', html);
     });
@@ -135,9 +137,9 @@ const calcDisplaySummary = function(acc){
  const outgoing = movs.filter(mov => mov<0).reduce((acc, mov)=> acc+mov, 0);
  const interest = movs.filter(mov => mov>0).map(deposit => (deposit*acc.interestRate)/100).filter(interests => interests>=1).reduce((acc, intr) => acc+intr, 0);
 
- document.querySelector('.in').textContent = `${incoming}$`;
- document.querySelector('.out').textContent = `${Math.abs(outgoing)}$`;
- document.querySelector('.int').textContent = `${interest}$`;
+ document.querySelector('.in').textContent = `${formatNumber(incoming)}$`;
+ document.querySelector('.out').textContent = `${formatNumber(Math.abs(outgoing))}$`;
+ document.querySelector('.int').textContent = `${formatNumber(interest)}$`;
 //  console.log(incoming, outgoing, interest, incoming+outgoing);
 };
 
@@ -154,7 +156,7 @@ const updateUi = function(acc){
         document.querySelector('.welcome').textContent = `Welcome back, ${currentAccount.userName[0].toUpperCase() + currentAccount.userName.slice(1)}`;
         document.querySelector('.app').style.opacity = 100;
         acc.balance = calculateBalance(acc.movements);
-        document.querySelector('.current_balance_value').textContent = `${acc.balance}$`;
+        document.querySelector('.current_balance_value').textContent = `${formatNumber(acc.balance)}$`;
         // updateMovements(currentAccount);
         calcDisplaySummary(acc);
 
@@ -314,7 +316,7 @@ document.querySelector('.loanButton').addEventListener('click', function(e){
     const movs = currentAccount.movements;
     const deposits = movs.filter(mov => mov > 0);
     const eligible = deposits.some(deposit => deposit >= (10*loanAmount)/100);
-    console.log(deposits, eligible);
+    // console.log(deposits, eligible);
     if(eligible)
     {
         // console.log("Eligible");
@@ -342,7 +344,7 @@ document.querySelector('.loanButton').addEventListener('click', function(e){
 
 const startLogoutTimer = function(){
     // clearInterval(timer);
-    let time = 20;
+    let time = 300;
     const tick = function(){
         const min = String(Math.trunc(time/60)).padStart(2, 0);
         const sec = String(Math.trunc(time%60)).padStart(2, 0);
@@ -361,3 +363,16 @@ const startLogoutTimer = function(){
     timer = setInterval(tick, 1000);
     return timer;
 };
+
+
+//Intl (Internationalization)
+
+// let num = 123456;
+// console.log(new Intl.NumberFormat('en-IN').format(num));
+
+// const formatNumber = (num) => new Intl.NumberFormat('en-IN').format(num);
+// console.log(formatNumber(123456));
+// console.log(formatNumber(1000));
+// console.log(formatNumber(10000));
+// console.log(formatNumber(100000));
+// console.log(formatNumber(10000000));
