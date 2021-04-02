@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bankist.</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="icon" href="icon.png" type="image/png">
+</head>
+<body>
+  <!-- Navigation Section -->
+  <div class="nav">
+    <p class="welcome">Login to get started.</p>
+    <img src="logo.png" class="logo">
+    <form class="login_form">
+      <input type="text" placeholder="User Id" class="login_details login_user">
+      <input type="password" placeholder="Pin" class="login_details login_pin">
+      <button class="login_button">&rarr;</button>
+    </form>
+  </div>
+  <!-- End of Navigation Section -->
+
+  <div class="app">
+
+    <!-- Current balance Section -->
+    <div class="current_balance">
+      <div>
+        <h2>Current Balance:</h2>
+        <p class="cd">As of <span class="current_date">27/03/2021</span></p>
+      </div>
+      <!-- <div><p class="errorMessage">Account does'nt exist.</p></div> -->
+      <div>
+        <p class="current_balance_value">1975$</p>
+      </div>
+    </div>
+    <!-- End of Current balance Section -->
+
+    <!-- Operations Section -->
+    <div class="operations">
+      <div class="left">
+        <div class="movements">
+
+          <div class="movement_row">
+            <div class="movement_type-deposit">1 deposit</div>
+            <!-- <div class="movements__date">3 days ago</div> -->
+            <div class="movement_value">30$</div>
+          </div>
+
+          <div class="movement_row">
+            <div class="movement_type-withdraw">2 withdraw</div>
+            <div class="movement_value">-10$</div>
+          </div>
+
+          <div class="movement_row">
+            <div class="movement_type-deposit">1 deposit</div>
+            <div class="movement_value">30$</div>
+          </div>
+
+          <div class="movement_row">
+            <div class="movement_type-withdraw">2 withdraw</div>
+            <div class="movement_value">-10$</div>
+          </div>
+
+          <div class="movement_row">
+            <div class="movement_type-deposit">1 deposit</div>
+            <div class="movement_value">30$</div>
+          </div>
+
+          <div class="movement_row">
+            <div class="movement_type-withdraw">2 withdraw</div>
+            <div class="movement_value">-10$</div>
+          </div>
+
+          <div class="movement_row">
+            <div class="movement_type-deposit">1 deposit</div>
+            <div class="movement_value">30$</div>
+          </div>
+
+          <div class="movement_row">
+            <div class="movement_type-withdraw">2 withdraw</div>
+            <div class="movement_value">-10$</div>
+          </div>
+
+        </div>
+      </div>
+      <div class="right">
+        <div class="operation transfer">
+          <h2>Transfer money</h2>
+          <form class="operationsForm">
+            <input type="text" class="formInput transferTo operationsFormInput" placeholder="To account">
+            <input type="number" class="formInput transferAmount operationsFormInput" placeholder="Amount">
+            <button class="opeartionsButton transferButton">&rarr;</button>
+          </form>
+        </div>
+        <div class="operation loan">
+          <h2>Request loan</h2>
+          <form class="operationsForm">
+            <input type="text" class="formInput loanAmount operationsFormInput" placeholder="Amount">
+            <button class="opeartionsButton loanButton">&rarr;</button>
+          </form>
+        </div>
+        <div class="operation close_account">
+          <h2>Close account</h2>
+          <form class="operationsForm">
+            <input type="text" class="formInput closeAccount operationsFormInput" placeholder="User Name">
+            <input type="password" class="formInput closeAccountPin operationsFormInput" placeholder="Pin">
+            <button class="opeartionsButton closeButton">&rarr;</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End of Operations Section -->
+
+    <!-- Summary Section -->
+    <div class="summary">
+      <div class="left">
+        <p class="summary_label">IN: </p>
+        <p class="summary_value in">500$</p>
+        <p class="summary_label">OUT: </p>
+        <p class="summary_value out">100$</p>
+        <p class="summary_label">INTEREST: </p>
+        <p class="summary_value int">20$</p>
+        <button class="button_sort">↓ Sort</button>
+      </div>
+      <div class="right">
+        <p>You will be logged out in <span class="logout_timer">10:00</span></p>
+        <button class="button_logout">Logout</button>
+      </div>
+    </div>
+    <!-- Summary Section -->
+  </div>
+<script src="script.js"></script>
+</body>
+</html>
+
+<!-- <div class="operation operation--transfer">
+  <h2>Transfer money</h2>
+  <form class="form form--transfer">
+    <input type="text" class="form__input form__input--to">
+    <input type="number" class="form__input form__input--amount">
+    <button class="form__btn form__btn--transfer">→</button>
+    <label class="form__label">Transfer to</label>
+    <label class="form__label">Amount</label>
+  </form>
+</div> -->
