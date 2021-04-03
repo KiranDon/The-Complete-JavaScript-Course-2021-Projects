@@ -1,0 +1,125 @@
+:root {
+    --color-primary: #5ec576;
+    --color-secondary: #ffcb03;
+    --color-tertiary: #ff585f;
+    --color-primary-darker: #4bbb7d;
+    --color-secondary-darker: #ffbb00;
+    --color-tertiary-darker: #fd424b;
+    --color-primary-opacity: #5ec5763a;
+    --color-secondary-opacity: #ffcd0331;
+    --color-tertiary-opacity: #ff58602d;
+    --gradient-primary: linear-gradient(to top left, #39b385, #9be15d);
+    --gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
+  }
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    background-color: #f3f3f3;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+}
+nav
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 90px;
+    z-index: 100;
+}
+.navImage
+{
+    height: 45px;
+}
+.navLinks
+{
+    display: flex;
+    list-style-type: none;
+    font-size: 20px;
+}
+.navItem
+{
+    margin-left: 48px;
+    padding: 0;
+}
+.navLink, .navLink:visited
+{
+    text-decoration: none;
+    color: inherit;
+    font-size: 17px;
+    font-weight: 300;
+}
+.navLinkLast, .navLinkLast:visited
+{
+    background-color: var(--color-primary);
+    padding: 14px 22px;
+    border-radius: 40px;
+    font-size: 18px;
+}
+.headerMain
+{
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+}
+.headerLeft, .headerRight
+{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.headerLeft
+{
+    /* line-height: 40px; */
+    font-size: 25px;
+    margin: 50px 5px;
+}
+.highlight
+{
+    position: relative;
+}
+.highlight::after
+{
+    content: '';
+    background-image: var(--gradient-primary);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transform: skew(-15deg);
+    opacity: 0.7;
+}
+.headerLeft > h4
+{
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 100;
+    margin: 40px 0px;
+}
+.learnMoreButton
+{
+    border: none;
+    outline: none;
+    color: var(--color-primary);
+    font-size: 20px;
+    background: transparent;
+    cursor: pointer;
+    width: 120px;
+    position: relative;
+    left: 0;
+    border-bottom: 1px solid var(--color-primary);
+}
+.headerRightImage
+{
+    width: 100%;
+    height: auto;
+    transform: scale(0.7) translateX(15px);
+}
