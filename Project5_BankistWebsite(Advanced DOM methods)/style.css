@@ -10,20 +10,24 @@
     --color-tertiary-opacity: #ff58602d;
     --gradient-primary: linear-gradient(to top left, #39b385, #9be15d);
     --gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
-  }
+}
 
 *
 {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 body
 {
     background-color: #f3f3f3;
     font-weight: 300;
     font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
+}
+.hidden
+{
+    display: none;
 }
 header
 {
@@ -186,4 +190,96 @@ nav
 .featureDetails
 {
     padding: 50px;
+}
+.tabDataLeft > .circle
+{
+    background-color: #f1e6bb;
+    position: relative;
+    right: -60px;
+    top: 0px;
+    transform: scale(1.5);
+}
+.tabsSection
+{
+    width: 75%;
+    height: 300px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.tabButtons
+{
+    width: 100%;
+    padding: 0 150px;
+    display: flex;
+    justify-content: space-around;
+}
+.tabButton
+{
+    padding: 13px 35px;
+    border-radius: 20px;
+    position: relative;
+    top: -20px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+#btn1
+{
+    background-color: var(--color-secondary);
+    /* transform: translateY(-10px); */
+}
+#btn2
+{
+    background-color: var(--color-primary);
+}
+#btn3
+{
+    background-color: var(--color-tertiary);
+}
+.tabData
+{
+    display: flex;
+    padding: 30px;
+    position: absolute;
+}
+.tabDataRight
+{
+    padding: 40px;
+}
+.tabDataRight h4
+{
+    font-size: 25px;
+    font-weight: 100;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+.tabDataRight p
+{
+    font-size: 15px;
+    word-spacing: 1px;
+    padding: 20px;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+#section2
+{
+    padding-bottom: 100px;
+}
+.sectionSignUp
+{
+    background-color: #37383D;
+    width: 100%;
+    height: 100vh;
+}
+
+
+/* Need to work on testimonials */
+
+.signUpTitle
+{
+    color: #fff;
+    text-align: center;
+    margin: 100px 150px;
+    font-size: 25px;
 }
