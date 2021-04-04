@@ -67,7 +67,7 @@ nav
 .navLinkLast, .navLinkLast:visited
 {
     background-color: var(--color-primary);
-    padding: 14px 22px;
+    padding: 8px 22px;
     border-radius: 40px;
     font-size: 18px;
 }
@@ -282,4 +282,82 @@ nav
     text-align: center;
     margin: 100px 150px;
     font-size: 25px;
+    border: none;
+}
+.signUpTitle .navLinkLast
+{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin: 50px;
+    padding: 20px;
+}
+.bottomLinks
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 40px 250px 0px 250px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: -30px;
+}
+.bottomLinks a, .bottomLinks a:visited
+{
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+.bottomLogo
+{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    padding-top: 30px;
+}
+
+/* style for modal */
+.openModal
+{
+    font-weight: 500;
+    transition: 0.1s ease-in;
+                
+}
+.openModal:hover
+{
+    transform: scale(1.05);
+}
+.modal
+{
+    width: 50%;
+    padding: 30px;
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+.closeButton
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: inline;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    outline: none;
+    font-size: 40px;
+    cursor: pointer;
+}
+.overlay
+{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
 }

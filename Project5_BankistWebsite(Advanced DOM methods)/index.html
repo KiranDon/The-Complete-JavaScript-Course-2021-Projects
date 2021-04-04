@@ -12,6 +12,8 @@
   <script defer src="script.js"></script>
 </head>
 <body>
+  
+
   <header>
     <nav>
       <img src="img/logo.png" class="navImage">
@@ -19,7 +21,7 @@
         <li class="navItem"><a href="#section1" class="navLink">Features</a></li>
         <li class="navItem"><a href="#section2" class="navLink">Operations</a></li>
         <li class="navItem"><a href="#section3" class="navLink">Testimonaials</a></li>
-        <li class="navItem"><a href="section4" class="navLink navLinkLast">Open Account</a></li>
+        <li class="navItem"><a href="" class="navLink navLinkLast openModal">Open Account</a></li>
       </ul>
     </nav>
 
@@ -105,7 +107,7 @@
         </div>
       </div>
 
-      <div class="tabData tabData2 hidden">
+      <div class="tabData tabData2">
         <div class="tabDataLeft">
           <div class="circle"></div>
         </div>
@@ -115,7 +117,7 @@
         </div>
       </div>
 
-      <div class="tabData tabData3 hidden">
+      <div class="tabData tabData3">
         <div class="tabDataLeft">
           <div class="circle"></div>
         </div>
@@ -140,10 +142,28 @@
 
     <div class="signUpTitle">
       <h1>The best day to join Bankist was one year ago.<br>The second best is today!</h1>
+      <button class="navLinkLast openModal">Open your free account today!</button>
     </div>
-
-
+    <div class="bottomLinks">
+      <a href="#">About</a>
+      <a href="#">Pricing</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Careers</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <img src="img/icon.png" class="bottomLogo">
   </section>
+  <!-- Modal start -->
+  <div class="modal hidden">
+    <button class="closeButton">&times;</button>
+    <h2>I am a modal window 1.😄</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ex, nostrum natus quae aperiam nihil soluta accusamus quam illo animi atque commodi, vitae dolorem id nisi laborum maiores reprehenderit sed?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis, ab. Aspernatur est neque, laborum officiis eaque placeat, itaque omnis tempore, quidem repudiandae nihil suscipit. Quisquam ut molestiae sequi sunt rerum!</p>
+   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ex, nostrum natus quae aperiam nihil soluta accusamus quam illo animi atque commodi, vitae dolorem id nisi laborum maiores reprehenderit sed?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis, ab. Aspernatur est neque, laborum officiis eaque placeat, itaque omnis tempore, quidem repudiandae nihil suscipit. Quisquam ut molestiae sequi sunt rerum!</p>
+  </div>  
+  <div class="overlay hidden"></div>
+  <!-- Modal End -->
   
 </body>
 </html>
