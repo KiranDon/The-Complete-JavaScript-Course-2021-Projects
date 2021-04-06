@@ -8,11 +8,13 @@ const openModal = function(e){
     e.preventDefault();
     modal.classList.remove('hidden');
     overlay.classList.remove('hidden');
+    document.body.style.position = 'fixed';
 }
 
 const closeModal = function(){
     modal.classList.add('hidden');
     overlay.classList.add('hidden');
+    document.body.style.position = '';
 }
 
 for(let i=0; i<openModalButtons.length; i++)
