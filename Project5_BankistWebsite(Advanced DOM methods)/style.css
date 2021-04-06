@@ -24,6 +24,7 @@ body
     background-color: #f3f3f3;
     font-weight: 300;
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
 }
 .hidden
 {
@@ -329,9 +330,9 @@ nav
 }
 .modal
 {
-    width: 50%;
-    padding: 30px;
-    background-color: white;
+    width: 40%;
+    padding: 50px;
+    background-color: #f3f3f3;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -339,13 +340,19 @@ nav
     z-index: 100;
     position: fixed;
 }
+.modal h2
+{
+    margin-bottom: 30px;
+    font-size: 35px;
+}
 .closeButton
 {
     position: absolute;
     right: 0;
     top: 0;
+    padding: 5px;
     display: inline;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.6);
     border: none;
     outline: none;
     font-size: 40px;
@@ -360,6 +367,156 @@ nav
     top: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
     position: fixed;
+}
+.modalForm
+{
+    display: flex;
+    flex-direction: column;
+}
+.modalRow
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    margin: 10px;
+}
+.modalButton
+{
+    border: none;
+    outline: none;
+    width: 150px;
+    background-color: var(--color-primary);
+    padding: 8px 22px;
+    border-radius: 40px;
+    font-size: 18px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+.modalInput
+{
+    border: none;
+    outline: none;
+    height: 30px;
+    padding: 10px;
+    font-size: 15px;
+}
+/* slider */
+#section3
+{
+    height: 140vh;
+
+}
+.slider
+{
+    width: 75%;
+    height: 60vh;
+    margin: 0px auto 20px auto;
+    position: relative;
+    padding: 50px 10px 50px 50px;
+}
+.slide
+{
+    position: absolute;
+    margin: 0px auto;
+    width: 80%;
+    height: 100px;
+    padding-left: 50px;
+}
+.arrows
+{
+    outline: none;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: white;
+    font-size: 20px;
+}
+.arrowRight
+{
+    position: absolute;
+    right: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.arrowLeft
+{
+    position: absolute;
+    left: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.dots
+{
+    position: absolute;
+    bottom: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.dot
+{
+    border-radius: 50%;
+    padding: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-right: 10px;
+}
+.testimonialText
+{
+    padding: 50px;
+}
+
+.testimonialAuthor img
+{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 20px;
+}
+.testimonialAuthor p
+{
+    font-size: 18px;
+}
+.lll
+{
+    margin: 40px 20px 0px 0px;
+}
+.testimonialAuthor
+{
+    display: flex;
+    margin: 20px;
+}
+.testimonial::before
+{
+    content: '\201C';
+    font-size: 130px;
+    color: var(--color-primary);
+    position: absolute;
+}
+.testimonialHeader
+{
+    margin: 10px;
+    font-size: 25px;
+    font-weight: 550;
+    color: rgba(0, 0, 0, 0.7);
+}
+.testimonialText > p
+{
+    margin-left: 10px;
+    padding: 10px 10px 0px 10px;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.7);
+    line-height: 25px;
+    font-size: 18px;
 }
