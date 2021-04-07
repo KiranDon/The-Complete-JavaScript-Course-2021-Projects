@@ -65,3 +65,52 @@ tabButtonsSection.addEventListener('click', function(e){
     // console.log(clicked.dataset.tab);
     document.querySelector(`.tabData${clicked.dataset.tab}`).classList.add('tabDataActive');
 });
+
+//sticky nav (using Intersection Observer API)
+const header = document.querySelector('header');
+const navHeight = document.querySelector('nav').getBoundingClientRect().height;
+
+const stickyNav = function(entries){
+    const [entry] = entries;
+    if(!entry.isIntersecting)
+    {
+        document.querySelector('nav').classList.add('sticky');
+    }
+    else
+    {
+        document.querySelector('nav').classList.remove('sticky');
+    }
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+    root: null,
+    threshold: 0,
+    rootMargin: `-${navHeight}px`
+});
+headerObserver.observe(header);
+
+//adding hover effect to navLinks...
+
+const navArea = document.querySelector('.nav');
+const navLinks = document.querySelectorAll('.navLink');
+
+const handleHover = function(e)
+{
+    if(e.target.classList.contains('navLink'))
+    {
+        const link = e.target;
+        const siblings = link.closest('.nav').querySelectorAll('.navLink');
+        const logo = document.querySelector('.navImage');
+
+        // console.log(this);
+        siblings.forEach(sib => {
+            if(sib!==link)
+            {
+                sib.style.opacity = this;
+                logo.style.opacity = this;
+            }
+        })
+    }
+}
+navArea.addEventListener('mouseover', handleHover.bind(0.5));
+navArea.addEventListener('mouseout', handleHover.bind(1));
