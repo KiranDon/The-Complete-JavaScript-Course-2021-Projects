@@ -199,6 +199,9 @@ nav
     right: -60px;
     top: 0px;
     transform: scale(1.5);
+    text-align: center;
+    padding-top: 10px;
+    font-size: 20px;
 }
 .tabsSection
 {
@@ -224,6 +227,11 @@ nav
     border: none;
     cursor: pointer;
     font-size: 18px;
+    transition: top 0.4s;
+}
+.tabButtonActive
+{
+    top: -30px;
 }
 #btn1
 {
@@ -241,12 +249,20 @@ nav
 .tabData
 {
     display: flex;
-    padding: 30px;
+    width: 100%;
     position: absolute;
+    transform: translateX(250%);
+    width: 80%;
+    transition: all 0.1s;
 }
+.tabDataActive
+{
+    transform: translateX(0%);
+}
+
 .tabDataRight
 {
-    padding: 40px;
+    padding: 50px;
 }
 .tabDataRight h4
 {
@@ -258,9 +274,11 @@ nav
 .tabDataRight p
 {
     font-size: 15px;
-    word-spacing: 1px;
+    letter-spacing: 1px;
+    line-height: 25px;
+    color: rgba(0, 0, 0, 0.7);
     padding: 20px;
-    padding-right: 50px;
+    padding-right: 150px;
     padding-left: 50px;
 }
 #section2

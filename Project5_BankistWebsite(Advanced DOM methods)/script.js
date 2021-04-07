@@ -33,3 +33,35 @@ document.addEventListener('keydown', function(e){
     }
 });
 // script for modal Ends here
+
+const learnMore = document.querySelector('.learnMoreButton');
+learnMore.addEventListener('click', function(e){
+    e.preventDefault();
+    // let s1Cords = document.getElementById('section1').getBoundingClientRect();
+    // console.log(s1Cords);
+    // console.log(window.pageXOffset, window.pageYOffset);
+    // window.scrollTo(s1Cords.left + window.pageXOffset, s1Cords.top + window.pageYOffset);
+    document.getElementById('section1').scrollIntoView({behavior: 'smooth'});
+});
+
+//tabbed section
+const tabButtonsSection = document.querySelector('.tabButtons');
+const tabButtons = document.querySelectorAll('.tabButton');
+const tabData = document.querySelectorAll('.tabData');
+
+tabButtonsSection.addEventListener('click', function(e){
+    const clicked = e.target.closest('.tabButton');
+    // console.log(clicked);
+
+    if(!clicked) return;
+
+    //styling buttons
+    tabButtons.forEach(b => b.classList.remove('tabButtonActive'));
+
+    clicked.classList.add('tabButtonActive');
+
+    //styling data
+    tabData.forEach(d => d.classList.remove('tabDataActive'));
+    // console.log(clicked.dataset.tab);
+    document.querySelector(`.tabData${clicked.dataset.tab}`).classList.add('tabDataActive');
+});
