@@ -44,7 +44,7 @@
     <div class="featuresBoxes">
       <div class="boxRow">
         <div class="boxLeft">
-          <img src="img/digital.jpg" class="boxImage"/>
+          <img src="img/digital-lazy.jpg" data-src="img/digital.jpg" class="boxImage lazyImage"/>
         </div>
         <div class="boxRight">
           <div class="featureDetails">
@@ -64,13 +64,13 @@
           </div>
         </div>
         <div class="boxRight">
-          <img src="img/grow.jpg" class="boxImage"/>
+          <img src="img/grow-lazy.jpg" data-src="img/grow.jpg" class="boxImage lazyImage"/>
         </div>
       </div>
 
       <div class="boxRow">
         <div class="boxLeft">
-          <img src="img/card.jpg" class="boxImage"/>
+          <img src="img/card-lazy.jpg" data-src="img/card.jpg" class="boxImage lazyImage"/>
         </div>
         <div class="boxRight">
           <div class="featureDetails">
@@ -137,8 +137,7 @@
     </div>
     <div class="slider">
 
-
-      <div class="slide">
+      <div class="slide  slide0">
         <div class="testimonial">
           <div class="testimonialText">
             <h4 class="testimonialHeader">Best financial decision ever!</h4>
@@ -146,15 +145,15 @@
             <div class="testimonialAuthor">
               <img src="img/user-1.jpg"/>
               <div class="lll">
-                <p>Aarav Lynn</p>
-                <h6>San Francisco, USA</h6>
+                <h6>Aarav Lynn</h6>
+                <p>San Francisco, USA</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="slide" style="transform: translateX(150%);">
+      <div class="slide  slide1">
         <div class="testimonial">
           <div class="testimonialText">
             <h4 class="testimonialHeader">The last step to becoming a complete minimalist</h4>
@@ -162,15 +161,15 @@
             <div class="testimonialAuthor">
               <img src="img/user-2.jpg"/>
               <div class="lll">
-                <p>Miyah Miles</p>
-                <h6>London, UK</h6>
+                <h6>Miyah Miles</h6>
+                <p>London, UK</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="slide" style="transform: translateX(250%);">
+      <div class="slide  slide2">
         <div class="testimonial">
           <div class="testimonialText">
             <h4 class="testimonialHeader">Finally free from old-school banks</h4>
@@ -178,8 +177,8 @@
             <div class="testimonialAuthor">
               <img src="img/user-3.jpg"/>
               <div class="lll">
-                <p>Francisco Gomes</p>
-                <h6>Libson, Portugal</h6>
+                <h6>Francisco Gomes</h6>
+                <p>Libson, Portugal</p>
               </div>
             </div>
           </div>
@@ -190,9 +189,9 @@
       <button class="arrows arrowLeft">&larr;</button>
       <button class="arrows arrowRight">&rarr;</button>
       <div class="dots">
-        <button class="dot"></button>
-        <button class="dot"></button>
-        <button class="dot"></button>
+        <button class="dot" data-slide="0"></button>
+        <button class="dot" data-slide="1"></button>
+        <button class="dot" data-slide="2"></button>
       </div>
     </div>
   

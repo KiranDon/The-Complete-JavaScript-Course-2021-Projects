@@ -143,6 +143,12 @@ nav
 .section
 {
     border-top: 1px solid rgb(216, 216, 216);
+    transition: all 0.5s;
+}
+.sectionHidden
+{
+    opacity: 0;
+    transform: translateY(50px);
 }
 .featuresTop
 {
@@ -182,6 +188,10 @@ nav
 .boxImage
 {
     width: 100%;
+}
+.lazyImage
+{
+    filter: blur(20px);
 }
 .circle
 {
@@ -439,10 +449,11 @@ nav
 .slider
 {
     width: 75%;
-    height: 60vh;
+    height: 70vh;
     margin: 0px auto 20px auto;
     position: relative;
-    padding: 50px 10px 50px 50px;
+    padding: 0px 10px 50px 50px;
+    overflow: hidden
 }
 .slide
 {
@@ -450,7 +461,8 @@ nav
     margin: 0px auto;
     width: 80%;
     height: 100px;
-    padding-left: 50px;
+    padding-left: 90px;
+    transition: all 0.4s;
 }
 .arrows
 {
@@ -479,7 +491,7 @@ nav
 .dots
 {
     position: absolute;
-    bottom: -20%;
+    bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -496,6 +508,10 @@ nav
     background-color: rgba(0, 0, 0, 0.2);
     margin-right: 10px;
 }
+.dotActive
+{
+    background-color: rgba(0, 0, 0, 0.8);
+}
 .testimonialText
 {
     padding: 50px;
@@ -510,7 +526,12 @@ nav
 }
 .testimonialAuthor p
 {
-    font-size: 18px;
+    font-size: 15px;
+}
+.testimonialAuthor h6
+{
+    font-size: 20px;
+    font-weight: 500;
 }
 .lll
 {
