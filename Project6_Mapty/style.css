@@ -1,0 +1,125 @@
+:root {
+  --color-brand--1: #ffb545;
+  --color-brand--2: #00c46a;
+
+  --color-dark--1: #2d3439;
+  --color-dark--2: #42484d;
+  --color-light--1: #aaa;
+  --color-light--2: #ececec;
+  --color-light--3: rgb(214, 222, 224);
+}
+*
+{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body
+{
+  display: flex;
+  padding: 20px;
+  height: 100vh;
+}
+.left
+{
+  width: 65%;
+  background-color: var(--color-dark--1);
+  height: 100%;
+  position: relative;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.right
+{
+  width: 100%;
+  background-color: var(--color-light--1);
+  height: 100%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.logo
+{
+  height: 50px;
+  position:absolute;
+  left: 50%;
+  top: 5%;
+  transform: translateX(-50%);
+}
+.list
+{
+  width: 80%;
+  height: 75% !important;
+  margin: 100px auto 50px auto;
+  font-size: 18px;
+  color: var(--color-light--2);
+  margin-top: 130px;
+  overflow-y: scroll;
+  /* border: 1px solid white; */
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.form
+{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: var(--color-dark--2);
+  border-radius: 10px;
+  padding: 15px 0px 10px 20px;
+}
+.formItem
+{
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 0px 10px 15px;
+  /* padding: 10px 0px 0px 0px; */
+}
+.form input[type='text'], .form select
+{
+  width: 80px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #D6DEE0;
+
+}
+.form input[type='text']:focus, .form select:focus
+{
+  border: none;
+  outline: none;
+  background-color:#fff;
+}
+ul
+{
+  list-style-type: none;
+}
+.workout
+{
+  /* border: 1px solid white; */
+  background-color: var(--color-dark--2);
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 10px;
+}
+.workoutCycling
+{
+  border-left: 5px solid var(--color-brand--1);
+}
+.workoutRunning
+{
+  border-left: 5px solid var(--color-brand--2);
+}
+.workoutTitle
+{
+  position: relative;
+  left: 5%;
+}
+.workoutDetails
+{
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
