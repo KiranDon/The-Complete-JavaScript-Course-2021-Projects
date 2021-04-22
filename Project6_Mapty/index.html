@@ -6,6 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mapty || Map your workouts</title>
   <link rel="shortcut icon" href="img/icon.png" type="image/png">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" type="text/css">
   <script defer src="script.js" type="text/javascript"></script>
 </head>
@@ -13,154 +21,163 @@
   <div class="left">
     <img src="img/logo.png" class="logo">
     <ul class="list">
-      <form class="form">
+      <form class="form hidden">
         <div class="formItem">
           <label>Type</label>
-          <select>
+          <select class="type">
             <option value="running">Running</option>
             <option value="cycling">Cycling</option>
           </select>
         </div>
         <div class="formItem">
           <label>Distance</label>
-          <input type="text" placeholder="km">
+          <input type="text" placeholder="km" class="inputDistance">
         </div>
         <div class="formItem">
           <label>Duration</label>
-          <input type="text" placeholder="min">
+          <input type="text" placeholder="min" class="inputDuration">
         </div>
         <div class="formItem">
           <label>Cadence</label>
-          <input type="text" placeholder="steps/min">
+          <input type="text" placeholder="steps/min" class="inputCadence">
         </div>
+        <div class="formItem hidden">
+          <label>Elevation</label>
+          <input type="text" placeholder="meters" class="inputElevation">
+        </div>
+        <input type="submit" class="hidden">
       </form>
 
-      <li class="workout workoutCycling">
+      <!-- <li class="workout workout-cycling" data-id="1111111111">
         <h3 class="workoutTitle">Cycling on April 14</h3>
         <div class="workoutDetails">
           <div class="oneDetail">
-            <span>🚴‍♀️</span>
-            <span>5</span>
-            <span>KM</span>
+            <span class="one">🚴‍♀️</span>
+            <span class="two">5</span>
+            <span class="three">KM</span>
           </div>
           <div class="oneDetail">
-            <span>⏱</span>
-            <span>20</span>
-            <span>MIN</span>
+            <span class="one">⏱</span>
+            <span class="two">20</span>
+            <span class="three">MIN</span>
           </div>
           <div class="oneDetail">
-            <span>⚡</span>
-            <span>2.5</span>
-            <span>KM/H</span>
+            <span class="one">⚡</span>
+            <span class="two">2.5</span>
+            <span class="three">KM/H</span>
           </div>
           <div class="oneDetail">
-            <span>⛰</span>
-            <span>10</span>
-            <span>M</span>
+            <span class="one">⛰</span>
+            <span class="two">10</span>
+            <span class="three">M</span>
           </div>
         </div>
-      </li>
+      </li> -->
       
-      <li class="workout workoutRunning">
+      <!-- <li class="workout workout-running">
         <h3 class="workoutTitle">Running on April 14</h3>
         <div class="workoutDetails">
           <div class="oneDetail">
-            <span>🚴‍♀️</span>
-            <span>5</span>
-            <span>KM</span>
+            <span class="one">🏃‍♂️</span>
+            <span class="two">5</span>
+            <span class="three">KM</span>
           </div>
           <div class="oneDetail">
-            <span>⏱</span>
-            <span>20</span>
-            <span>MIN</span>
+            <span class="one">⏱</span>
+            <span class="two">20</span>
+            <span class="three">MIN</span>
           </div>
           <div class="oneDetail">
-            <span>⚡</span>
-            <span>2.5</span>
-            <span>KM/H</span>
+            <span class="one">⚡</span>
+            <span class="two">2.5</span>
+            <span class="three">MIN/KM</span>
           </div>
           <div class="oneDetail">
-            <span>⛰</span>
-            <span>10</span>
-            <span>M</span>
+            <span class="one">🦶</span>
+            <span class="two">10</span>
+            <span class="three">SPM</span>
           </div>
         </div>
-      </li>
-      <li class="workout workoutCycling">
+      </li> -->
+
+      <!-- <li class="workout workout-cycling">
         <h3 class="workoutTitle">Cycling on April 14</h3>
         <div class="workoutDetails">
           <div class="oneDetail">
-            <span>🚴‍♀️</span>
-            <span>5</span>
-            <span>KM</span>
+            <span class="one">🚴‍♀️</span>
+            <span class="two">5</span>
+            <span class="three">KM</span>
           </div>
           <div class="oneDetail">
-            <span>⏱</span>
-            <span>20</span>
-            <span>MIN</span>
+            <span class="one">⏱</span>
+            <span class="two">20</span>
+            <span class="three">MIN</span>
           </div>
           <div class="oneDetail">
-            <span>⚡</span>
-            <span>2.5</span>
-            <span>KM/H</span>
+            <span class="one">⚡</span>
+            <span class="two">2.5</span>
+            <span class="three">KM/H</span>
           </div>
           <div class="oneDetail">
-            <span>⛰</span>
-            <span>10</span>
-            <span>M</span>
+            <span class="one">⛰</span>
+            <span class="two">10</span>
+            <span class="three">M</span>
           </div>
         </div>
-      </li>
-      <li class="workout workoutCycling">
+      </li> -->
+
+      <!-- <li class="workout workout-running">
+        <h3 class="workoutTitle">Running on April 14</h3>
+        <div class="workoutDetails">
+          <div class="oneDetail">
+            <span class="one">🏃‍♂️</span>
+            <span class="two">5</span>
+            <span class="three">KM</span>
+          </div>
+          <div class="oneDetail">
+            <span class="one">⏱</span>
+            <span class="two">20</span>
+            <span class="three">MIN</span>
+          </div>
+          <div class="oneDetail">
+            <span class="one">⚡</span>
+            <span class="two">2.5</span>
+            <span class="three">MIN/KM</span>
+          </div>
+          <div class="oneDetail">
+            <span class="one">🦶</span>
+            <span class="two">10</span>
+            <span class="three">SPM</span>
+          </div>
+        </div>
+      </li> -->
+
+      <!-- <li class="workout workout-cycling">
         <h3 class="workoutTitle">Cycling on April 14</h3>
         <div class="workoutDetails">
           <div class="oneDetail">
-            <span>🚴‍♀️</span>
-            <span>5</span>
-            <span>KM</span>
+            <span class="one">🚴‍♀️</span>
+            <span class="two">5</span>
+            <span class="three">KM</span>
           </div>
           <div class="oneDetail">
-            <span>⏱</span>
-            <span>20</span>
-            <span>MIN</span>
+            <span class="one">⏱</span>
+            <span class="two">20</span>
+            <span class="three">MIN</span>
           </div>
           <div class="oneDetail">
-            <span>⚡</span>
-            <span>2.5</span>
-            <span>KM/H</span>
+            <span class="one">⚡</span>
+            <span class="two">2.5</span>
+            <span class="three">KM/H</span>
           </div>
           <div class="oneDetail">
-            <span>⛰</span>
-            <span>10</span>
-            <span>M</span>
+            <span class="one">⛰</span>
+            <span class="two">10</span>
+            <span class="three">M</span>
           </div>
         </div>
-      </li>
-      <li class="workout workoutCycling">
-        <h3 class="workoutTitle">Cycling on April 14</h3>
-        <div class="workoutDetails">
-          <div class="oneDetail">
-            <span>🚴‍♀️</span>
-            <span>5</span>
-            <span>KM</span>
-          </div>
-          <div class="oneDetail">
-            <span>⏱</span>
-            <span>20</span>
-            <span>MIN</span>
-          </div>
-          <div class="oneDetail">
-            <span>⚡</span>
-            <span>2.5</span>
-            <span>KM/H</span>
-          </div>
-          <div class="oneDetail">
-            <span>⛰</span>
-            <span>10</span>
-            <span>M</span>
-          </div>
-        </div>
-      </li>
+      </li> -->
+      
     </ul>
   </div>
 
