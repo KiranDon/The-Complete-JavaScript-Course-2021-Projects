@@ -29,6 +29,7 @@ body
   position: relative;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  overflow-y: hidden;
 }
 .right
 {
@@ -64,11 +65,13 @@ body
 {
   display: flex;
   flex-wrap: wrap;
+  width: 80%;
+  margin: 100px auto -130px auto;
   background-color: var(--color-dark--2);
   border-radius: 10px;
   padding: 15px 0px 10px 20px;
   /* position: relative;
-  top: -30%; */
+  top: -100%; */
 }
 .formItem
 {

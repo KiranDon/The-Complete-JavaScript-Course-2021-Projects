@@ -20,33 +20,34 @@
 <body>
   <div class="left">
     <img src="img/logo.png" class="logo">
+    <form class="form hidden">
+      <div class="formItem">
+        <label>Type</label>
+        <select class="type">
+          <option value="running">Running</option>
+          <option value="cycling">Cycling</option>
+        </select>
+      </div>
+      <div class="formItem">
+        <label>Distance</label>
+        <input type="text" placeholder="km" class="inputDistance">
+      </div>
+      <div class="formItem">
+        <label>Duration</label>
+        <input type="text" placeholder="min" class="inputDuration">
+      </div>
+      <div class="formItem">
+        <label>Cadence</label>
+        <input type="text" placeholder="steps/min" class="inputCadence">
+      </div>
+      <div class="formItem hidden">
+        <label>Elevation</label>
+        <input type="text" placeholder="meters" class="inputElevation">
+      </div>
+      <input type="submit" class="hidden">
+    </form>
     <ul class="list">
-      <form class="form hidden">
-        <div class="formItem">
-          <label>Type</label>
-          <select class="type">
-            <option value="running">Running</option>
-            <option value="cycling">Cycling</option>
-          </select>
-        </div>
-        <div class="formItem">
-          <label>Distance</label>
-          <input type="text" placeholder="km" class="inputDistance">
-        </div>
-        <div class="formItem">
-          <label>Duration</label>
-          <input type="text" placeholder="min" class="inputDuration">
-        </div>
-        <div class="formItem">
-          <label>Cadence</label>
-          <input type="text" placeholder="steps/min" class="inputCadence">
-        </div>
-        <div class="formItem hidden">
-          <label>Elevation</label>
-          <input type="text" placeholder="meters" class="inputElevation">
-        </div>
-        <input type="submit" class="hidden">
-      </form>
+      
 
       <!-- <li class="workout workout-cycling" data-id="1111111111">
         <h3 class="workoutTitle">Cycling on April 14</h3>
