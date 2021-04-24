@@ -265,7 +265,7 @@ class App{
 
     _getLocalStorage() {
         const data = JSON.parse(localStorage.getItem('workouts'));
-        console.log(data);
+        // console.log(data);
 
         //rendering data on map and list if data is already available in localStorage
 
