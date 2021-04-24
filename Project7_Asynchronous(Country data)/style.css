@@ -1,0 +1,62 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container
+{
+    width: 80%;
+    overflow: hidden;
+    padding: 20px;
+}
+.countries
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+.country
+{
+    width: 230px;
+    height: 350px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.5);
+}
+.countryImage
+{
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+    padding: 5px;
+}
+.countryData
+{
+    width: 100%;
+    padding: 10px;
+}
+.countryName
+{
+    margin-bottom: px;
+}
+.countryRegion
+{
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 13px;
+}
+.countryRow
+{
+    margin: 20px auto;
+}
+.countryRow span
+{
+    margin-right: 5px;
+}
