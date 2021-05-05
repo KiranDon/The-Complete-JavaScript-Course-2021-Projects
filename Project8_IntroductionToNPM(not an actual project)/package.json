@@ -9,6 +9,7 @@
   "author": "KiranDon",
   "license": "ISC",
   "dependencies": {
-    "is-even": "^1.0.0"
+    "is-even": "^1.0.0",
+    "live-server": "^1.2.1"
   }
 }
