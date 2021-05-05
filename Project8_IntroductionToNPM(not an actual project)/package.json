@@ -1,0 +1,14 @@
+{
+  "name": "learningnpm",
+  "version": "1.0.0",
+  "description": "Just learning npm",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "KiranDon",
+  "license": "ISC",
+  "dependencies": {
+    "is-even": "^1.0.0"
+  }
+}
