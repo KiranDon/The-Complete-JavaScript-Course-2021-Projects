@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "is-even": "^1.0.0",
-    "live-server": "^1.2.1"
+    "live-server": "^1.2.1",
+    "lodash": "^4.17.21"
   }
 }
