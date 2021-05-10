@@ -1,0 +1,15 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "A recipe finding app",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "forkify",
+    "recipe"
+  ],
+  "author": "K!r@nD0n",
+  "license": "ISC"
+}
