@@ -183,7 +183,7 @@ header
 .searchResults
 {
     background-color: #fff;
-    width: 40%;
+    width: 35%;
     height: auto;
     margin-top: 90px;
     z-index: 4;
@@ -265,6 +265,7 @@ header
     height: 100%;
     margin-top: 90px;
     z-index: 0;
+    position: relative;
     /* border: 1px solid navy; */
 }
 .recipe .message
@@ -293,24 +294,25 @@ header
 }
 .recipeName
 {
-    position: relative;
-    top: 38%;
+    position: absolute;
+    /* top: 20%; */
     left: 50%;
     transform: translateX(-50%) skew(-20deg);
-    width: 250px;
-    height: 50px;
+    /* width: 250px; */
+    height: auto;
     background-image: var(--gradient);
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: white;
+    text-align: center;
+    /* margin-bottom: 80px; */
 }
 .tsb
 {
     /* border: 1px solid blue; */
+    position: relative;
     display: flex;
     justify-content: space-between;
     padding: 0px 70px;
+    margin-top: 120px;
     height: 100px;
     align-items: center;
 }
@@ -433,4 +435,29 @@ header
 .recipeLinkButtonSvg
 {
     fill: #fff;
+}
+.recipeLink
+{
+    text-decoration: none;
+}
+.spinner
+{
+    margin: 10px;
+    text-align: center;
+}
+.spinner svg
+{
+    fill: #f38e82;
+    width: 80px;
+    height: 80px;
+    animation: rotate 2s linear infinite;
+}
+@keyframes rotate
+{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
 }
