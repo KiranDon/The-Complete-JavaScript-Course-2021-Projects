@@ -185,19 +185,24 @@ header
     background-color: #fff;
     width: 35%;
     height: auto;
+    /* min-height: 100vh; */
     margin-top: 90px;
     z-index: 4;
-    /* border: 1px solid blue; */
+    
 }
 .results
 {
     width: 100%;
+    height: auto;
+    min-height: 104vh;
     overflow: hidden;
     list-style-type: none;
 }
 .result
 {
     margin: 20px 0px;
+    padding: 0px 30px;
+    /* border: 1px solid navy; */
 }
 .result:hover
 {
@@ -206,7 +211,6 @@ header
 .resultLink
 {
     display: flex;
-    justify-content: center;
     align-items: center;
     text-decoration: none;
 }
@@ -231,6 +235,7 @@ header
     justify-content: space-between;
     margin-top: 40px;
     padding: 0px 50px;
+    
 
 }
 .paginationButton

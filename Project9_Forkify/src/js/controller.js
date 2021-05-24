@@ -1,4 +1,8 @@
 const recipeContainer = document.querySelector('.recipe');
+const resultsContainer = document.querySelector('.results');
+const searchForm = document.querySelector('.searchForm');
+let resultsPerPage = 10;
+let currentPage = 1;
 
 const timeout = function (s) {
   return new Promise(function (_, reject) {
@@ -23,13 +27,15 @@ parentElement.innerHTML = '';
 parentElement.insertAdjacentHTML('afterbegin', html)
 }
 
-const getRecipe = async function()
+const displayRecipe = async function()
 {
   try
   {
+    let id = location.hash.slice(1);
+
     showSpinner(recipeContainer);
 
-    const response = await fetch(`https://forkify-api.herokuapp.com/api/get?rId=54388`);
+    const response = await fetch(`https://forkify-api.herokuapp.com/api/get?rId=${id}`);
 
     if(!response.ok){
       throw new Error(`${response.statusText} (${response.status})`);
@@ -133,4 +139,78 @@ const getRecipe = async function()
     alert(err);
   }
 };
-getRecipe();
+// displayRecipe();
+
+
+const displayResults = function(recipes){
+
+// console.log(resultsPerPage);
+
+  recipes.forEach(recipe => {
+    let html = `<li class="result">
+    <a href="#${recipe.recipe_id}" class="resultLink">
+      <div class="resultImage">
+        <img src="${recipe.image_url}">
+      </div>
+      <div class="resultData">
+        <h4 class="resultTitle">${recipe.title}.</h4>
+        <p class="resultPublisher">${recipe.publisher}</p>
+      </div>
+    </a>
+    </li>`;
+
+  resultsContainer.insertAdjacentHTML('afterbegin', html);
+
+  });
+  
+}
+
+const controlPagination = function(recipes, numberOfResults, numberOfPages){
+  // displayResults(recipes);
+  // if()
+
+
+}
+
+const search = async function(recipeName)
+{
+  try{
+    let dataRes = await fetch(`https://forkify-api.herokuapp.com/api/search?q=${recipeName}`);
+    if(!dataRes.ok){
+      throw new Error(`Can't find the requested recipe :-(`)
+    }
+    let data = await dataRes.json();
+    let {recipes} = data;
+    let numberOfResults = data.count;
+    let numberOfPages = Math.ceil(numberOfResults/resultsPerPage);
+
+    // console.log(data)
+    // console.log(numberOfResults)
+    // console.log(numberOfPages)
+    // console.log(recipes);
+    controlPagination(recipes, numberOfResults, numberOfPages)
+    // displayResults(recipes);
+  }
+  catch(error){
+  // console.log(error.message)
+    alert(error.message);
+  }
+
+}
+// search();
+searchForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  
+  const recipeName = document.querySelector('.searchField').value;
+
+  search(recipeName);
+
+  document.querySelector('.searchField').value = '';
+  document.querySelector('.searchField').blur();
+  
+  console.log(recipeName);
+})
+
+//link click
+window.addEventListener('hashchange', displayRecipe)
+
