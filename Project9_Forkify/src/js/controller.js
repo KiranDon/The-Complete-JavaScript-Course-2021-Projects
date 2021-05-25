@@ -1,6 +1,10 @@
 const recipeContainer = document.querySelector('.recipe');
 const resultsContainer = document.querySelector('.results');
 const searchForm = document.querySelector('.searchForm');
+const bookmarksBlock = document.querySelector('.bookmarks');
+const bookmarksButton = document.querySelector('.bookmarksButton');
+const addRecipeButton = document.querySelector('.addRecipeButton');
+const addBookmark = document.querySelector('.bookmarkIcon');
 let resultsPerPage = 10;
 let currentPage = 1;
 
@@ -65,39 +69,10 @@ const displayRecipe = async function()
       <h1>${recipe.title}.</h1>
     </div>
 
-    <div class="tsb">
-      <div class="timeAndServings">
-        <div class="duration">
-          <svg class="clockIcon icon">
-            <use href="src/img/icons.svg#icon-clock"></use>
-          </svg>
-          <span class="durationNumber">30</span>
-          &nbsp;Minutes
-        </div>
-        <div class="servings">
-          <svg class="usersIcon icon">
-            <use href="src/img/icons.svg#icon-users"></use>
-          </svg>
-          <span class="servingsNumber">4</span>
-          &nbsp;Servings
-          <div class="plusAndMinus">
-            <svg class="plusIcon icon">
-              <use href="src/img/icons.svg#icon-plus-circle"></use>
-            </svg>
-            <svg class="minusIcon icon">
-              <use href="src/img/icons.svg#icon-minus-circle"></use>
-            </svg>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="bookmarkIcon">
-        &nbsp;
-        <svg class="bookmarkIconSvg icon">
-          <use href="src/img/icons.svg#icon-bookmark"></use>
-        </svg>
-      </div>
+    <div class="bookmarkIcon">
+    <svg class="bookmarkIconSvg icon">
+    <use href="src/img/icons.svg#icon-bookmark"></use>
+      </svg>
     </div>
 
     <div class="ingredientsBlock">
@@ -132,9 +107,10 @@ const displayRecipe = async function()
     `;
     
     recipeContainer.innerHTML = '';
-    recipeContainer.insertAdjacentHTML('afterbegin', html) 
-  
+    recipeContainer.insertAdjacentHTML('afterbegin', html);
 
+  await addBookmark.addEventListener('click', bookmark);
+  
   }catch(err){
     alert(err);
   }
@@ -175,6 +151,7 @@ const controlPagination = function(recipes, numberOfResults, numberOfPages){
 const search = async function(recipeName)
 {
   try{
+    showSpinner(resultsContainer);
     let dataRes = await fetch(`https://forkify-api.herokuapp.com/api/search?q=${recipeName}`);
     if(!dataRes.ok){
       throw new Error(`Can't find the requested recipe :-(`)
@@ -189,11 +166,12 @@ const search = async function(recipeName)
     // console.log(numberOfPages)
     // console.log(recipes);
     controlPagination(recipes, numberOfResults, numberOfPages)
-    // displayResults(recipes);
+    displayResults(recipes);
   }
   catch(error){
   // console.log(error.message)
     alert(error.message);
+    resultsContainer.innerHTML = '';
   }
 
 }
@@ -214,3 +192,14 @@ searchForm.addEventListener('submit', function(e){
 //link click
 window.addEventListener('hashchange', displayRecipe)
 
+bookmarksButton.addEventListener('click', function(e){
+  e.preventDefault();
+  bookmarksBlock.classList.toggle('hidden');
+  // console.log('bookmarks');
+});
+
+addRecipeButton.addEventListener('click', () => alert("This feature will be implemented soon :-)"));
+
+const bookmark = function(){
+  alert("hhh");
+};

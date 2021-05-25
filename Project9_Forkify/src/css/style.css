@@ -143,12 +143,23 @@ header
     right: 0;
     top: 100%;
     background-color: #fff;
-    width: 300px;
+    width: 350px;
+    /* height: auto; */
+    max-height: 350px;
+    min-height: 100px;
     list-style-type: none;
     z-index: 100;
     box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.2);
+    overflow-y: scroll;
 }
-.bookmarks::before
+.bookmarks::-webkit-scrollbar {
+    display: none;
+    /* background-color: #f38e82;
+    width: 10px;
+    height: 20px;
+    border-radius: 10px; */
+  }
+/* .bookmarks::before
 {
     content: '';
     width: 0px;
@@ -162,12 +173,15 @@ header
     border-right: 20px solid var(--color-grey-light-1);
     border-bottom: 40px solid transparent;
 
-}
+} */
 .message
 {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .messageIcon
 {
@@ -303,68 +317,44 @@ header
     /* top: 20%; */
     left: 50%;
     transform: translateX(-50%) skew(-20deg);
-    /* width: 250px; */
-    height: auto;
-    background-image: var(--gradient);
     color: white;
     text-align: center;
-    /* margin-bottom: 80px; */
+    width: 80%;
+    padding: 0px 50px;
+
 }
-.tsb
+.recipeName h1
 {
-    /* border: 1px solid blue; */
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 70px;
-    margin-top: 120px;
-    height: 100px;
-    align-items: center;
+    background-image: var(--gradient);
+    background-size: cover;
+    /* width: auto; */
 }
-.timeAndServings, .duration, .servings, .bookmarkIcon
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    margin-right: 40px;
-    /* border: 1px solid blue; */
-}
-.clockIcon, .usersIcon, .plusIcon, .minusIcon, .recipeIcon
-{
-    fill: var(--color-primary);
-}
-.servingsNumber, .durationNumber
-{
-    /* font-size: 1px; */
-    font-weight: bold;
-}
-.plusAndMinus
-{
-    margin-left: 10px;
-}
+
 .bookmarkIcon
 {
     background-color: var(--color-primary);
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    position: absolute;
+    right: 0%;
 }
 .bookmarkIconSvg
 {
     fill: #fff;
     font-size: 19px;
     font-weight: 900;
-
-}
-.plusIcon, .minusIcon, .bookmarkIconSvg
-{
+    position: absolute;
     cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .ingredientsBlock
 {
     background-color: var(--color-grey-light-2);
     padding-top: 30px;
+    margin-top: 100px;
 }
 .ingredientsBlock h2
 {
@@ -453,8 +443,8 @@ header
 .spinner svg
 {
     fill: #f38e82;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     animation: rotate 2s linear infinite;
 }
 @keyframes rotate
