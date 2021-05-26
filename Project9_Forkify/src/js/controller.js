@@ -5,8 +5,11 @@ const bookmarksBlock = document.querySelector('.bookmarks');
 const bookmarksButton = document.querySelector('.bookmarksButton');
 const addRecipeButton = document.querySelector('.addRecipeButton');
 const addBookmark = document.querySelector('.bookmarkIcon');
-let resultsPerPage = 10;
-let currentPage = 1;
+const resultsPerPage = 10;
+const currentPage = 1;
+let recipe;
+let bookmarks = [];
+
 
 const timeout = function (s) {
   return new Promise(function (_, reject) {
@@ -47,7 +50,7 @@ const displayRecipe = async function()
 
     const data = await response.json();
     
-    let recipe = data.recipe;
+    recipe = data.recipe;
     recipe = {
       imageURL: recipe.image_url,
       ingredients: recipe.ingredients,
@@ -57,7 +60,7 @@ const displayRecipe = async function()
       sourceURL: recipe.source_url,
       title: recipe.title
     }
-    console.log(recipe);
+    // console.log(recipe);
 
     const html = `
     <div class="recipeBlock">
@@ -109,10 +112,10 @@ const displayRecipe = async function()
     recipeContainer.innerHTML = '';
     recipeContainer.insertAdjacentHTML('afterbegin', html);
 
-  await addBookmark.addEventListener('click', bookmark);
   
   }catch(err){
-    alert(err);
+    // alert(err);
+    console.log(err)
   }
 };
 // displayRecipe();
@@ -169,8 +172,8 @@ const search = async function(recipeName)
     displayResults(recipes);
   }
   catch(error){
-  // console.log(error.message)
-    alert(error.message);
+  console.log(error)
+    // alert(error.message);
     resultsContainer.innerHTML = '';
   }
 
@@ -186,11 +189,11 @@ searchForm.addEventListener('submit', function(e){
   document.querySelector('.searchField').value = '';
   document.querySelector('.searchField').blur();
   
-  console.log(recipeName);
 })
 
 //link click
 window.addEventListener('hashchange', displayRecipe)
+
 
 bookmarksButton.addEventListener('click', function(e){
   e.preventDefault();
@@ -200,6 +203,87 @@ bookmarksButton.addEventListener('click', function(e){
 
 addRecipeButton.addEventListener('click', () => alert("This feature will be implemented soon :-)"));
 
-const bookmark = function(){
-  alert("hhh");
+//bookmarks feature
+const updateBookmarks = function(){
+  if(!bookmarks.length == 0)
+  {
+    bookmarksBlock.innerHTML = '';
+    bookmarks.forEach(function(bookmark){
+      let html = `<li class="result">
+      <a href="#${bookmark.recipeId}" class="resultLink">
+        <div class="resultImage">
+          <img src="${bookmark.imageURL}">
+        </div>
+        <div class="resultData">
+          <h4 class="resultTitle">${bookmark.title}.</h4>
+          <p class="resultPublisher">${bookmark.publisher}.</p>
+        </div>
+      </a>
+    </li>`;
+
+    bookmarksBlock.insertAdjacentHTML('afterbegin', html);
+    })
+  }else{
+    bookmarksBlock.innerHTML = `<li class="message">
+    <svg class="messageIcon icon">
+      <use href="src/img/icons.svg#icon-alert-triangle"></use>
+    </svg>
+    <p>
+      No bookmarks yet. Find a nice recipe and bookmark it :)
+    </p>
+  </li>`;
+  }
+}
+
+const addOrRemoveBookmark = function(id){
+
+  // console.log('--------------');
+  let bookmarked = bookmarks.some(bookmark => {
+    if(bookmark.recipeId == id){
+      return true;
+    }else{
+      return false;
+    }
+  });
+  // console.log(bookmarked)
+
+  if(bookmarked){
+    let index = bookmarks.findIndex(bookmark => bookmark.recipeId === id);
+    bookmarks.splice(index, 1);
+  }else{
+    bookmarks.push(recipe);
+  }
+  updateBookmarks();
+  store();
+  
 };
+
+recipeContainer.addEventListener('click', function(e){
+  const btn = e.target.closest('.bookmarkIcon');
+  if(!btn) return;
+  let id = location.hash.slice(1);
+  console.log(id);
+  addOrRemoveBookmark(id);
+})
+
+//localstorage
+const store = function(){
+  localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+  // alert("Saved")
+}
+
+const getData = function(){
+  let data = JSON.parse(localStorage.getItem('bookmarks'));
+  console.log(data);
+  if(data)
+  {
+    bookmarks = data;
+  }
+}
+
+
+const init = function(){
+  getData();
+  updateBookmarks();
+};
+init();
