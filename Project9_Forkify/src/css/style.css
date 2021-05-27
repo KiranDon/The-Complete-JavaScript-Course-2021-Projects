@@ -26,7 +26,7 @@ body
 .hidden
 {
     display: none; 
-    visibility: hidden;
+        visibility: hidden;
     /* opacity: 0; */
 }
 .container

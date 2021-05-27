@@ -5,10 +5,15 @@ const bookmarksBlock = document.querySelector('.bookmarks');
 const bookmarksButton = document.querySelector('.bookmarksButton');
 const addRecipeButton = document.querySelector('.addRecipeButton');
 const addBookmark = document.querySelector('.bookmarkIcon');
+const pagination = document.querySelector('.pagination');
+
 const resultsPerPage = 10;
-const currentPage = 1;
+let currentPage = 1;
 let recipe;
 let bookmarks = [];
+let recipes;
+let numberOfPages;
+let numberOfResults;
 
 
 const timeout = function (s) {
@@ -124,7 +129,7 @@ const displayRecipe = async function()
 const displayResults = function(recipes){
 
 // console.log(resultsPerPage);
-
+resultsContainer.innerHTML = '';
   recipes.forEach(recipe => {
     let html = `<li class="result">
     <a href="#${recipe.recipe_id}" class="resultLink">
@@ -144,12 +149,12 @@ const displayResults = function(recipes){
   
 }
 
-const controlPagination = function(recipes, numberOfResults, numberOfPages){
-  // displayResults(recipes);
-  // if()
+// const controlPagination = function(recipes, numberOfResults, numberOfPages){
+//   // displayResults(recipes);
+//   // if()
 
 
-}
+// }
 
 const search = async function(recipeName)
 {
@@ -160,16 +165,18 @@ const search = async function(recipeName)
       throw new Error(`Can't find the requested recipe :-(`)
     }
     let data = await dataRes.json();
-    let {recipes} = data;
-    let numberOfResults = data.count;
-    let numberOfPages = Math.ceil(numberOfResults/resultsPerPage);
-
+    // console.log(data)
+    recipes = data.recipes;
+    
     // console.log(data)
     // console.log(numberOfResults)
     // console.log(numberOfPages)
     // console.log(recipes);
-    controlPagination(recipes, numberOfResults, numberOfPages)
-    displayResults(recipes);
+    // controlPagination(recipes, numberOfResults, numberOfPages)
+    // displayResults(recipes);
+    numberOfResults = data.count;
+    numberOfPages = Math.ceil(numberOfResults/resultsPerPage);
+    controlPagination();
   }
   catch(error){
   console.log(error)
@@ -250,8 +257,11 @@ const addOrRemoveBookmark = function(id){
   if(bookmarked){
     let index = bookmarks.findIndex(bookmark => bookmark.recipeId === id);
     bookmarks.splice(index, 1);
+    alert("UnBookmarked the recipe.");
   }else{
     bookmarks.push(recipe);
+    document.querySelector('.bookmarkIcon').style.backgroundColor = 'red';
+    alert("Recipe bookmarked.");
   }
   updateBookmarks();
   store();
@@ -260,7 +270,15 @@ const addOrRemoveBookmark = function(id){
 
 recipeContainer.addEventListener('click', function(e){
   const btn = e.target.closest('.bookmarkIcon');
-  if(!btn) return;
+  if(!btn){
+    //closing bookmarks section
+    // if(bookmarksBlock.classList.contains('hidden')){
+
+    //   bookmarksBlock.classList.remove('hidden');
+    //   console.log('closee')
+    // }
+    return;
+  }
   let id = location.hash.slice(1);
   console.log(id);
   addOrRemoveBookmark(id);
@@ -280,6 +298,82 @@ const getData = function(){
     bookmarks = data;
   }
 }
+
+//pagination
+const controlPagination = function(){
+  let start = (currentPage - 1) * resultsPerPage;
+  let end = currentPage * resultsPerPage;
+  if(currentPage<=numberOfPages){
+    console.log(start, end);
+    // console.log(recipes.slice(start, end));
+    displayResults(recipes.slice(start, end));
+  }
+
+  //first page and some pages left
+  if(currentPage === 1 && numberOfPages > currentPage){
+    let html = `<button class="paginationButton" data-page="${currentPage + 1}">
+    <span>Page ${currentPage + 1}</span>
+    <svg class="icon paginationIcon">
+      <use href="src/img/icons.svg#icon-arrow-right"></use>
+    </svg>
+  </button>`;
+
+    document.querySelector('.paginationButtonLeft').innerHTML = '';
+    document.querySelector('.paginationButtonRight').innerHTML = html;
+    // console.log('this works')
+
+  }
+
+
+  //first page and NO pages left
+  if(currentPage === 1 && numberOfPages === 0){
+    return;
+  }
+
+  //Last page
+  if(currentPage === numberOfPages){
+    let html = `<button class="paginationButton" data-page="${currentPage - 1}">
+    <svg class="icon paginationIcon">
+      <use href="src/img/icons.svg#icon-arrow-left"></use>
+    </svg>
+    <span>Page ${currentPage - 1}</span>
+  </button>`;
+
+    document.querySelector('.paginationButtonLeft').innerHTML = html;
+    document.querySelector('.paginationButtonRight').innerHTML = '';
+    // console.log('this works')
+  }
+
+  //other page
+  if(currentPage > 1 && currentPage < numberOfPages){
+    let htmlLeft = `<button class="paginationButton" data-page="${currentPage - 1}">
+    <svg class="icon paginationIcon">
+      <use href="src/img/icons.svg#icon-arrow-left"></use>
+    </svg>
+    <span>Page ${currentPage - 1}</span>
+  </button>`;
+
+  let htmlRight = `<button class="paginationButton" data-page="${currentPage + 1}">
+  <span>Page ${currentPage + 1}</span>
+  <svg class="icon paginationIcon">
+    <use href="src/img/icons.svg#icon-arrow-right"></use>
+  </svg>
+</button>`;
+
+document.querySelector('.paginationButtonLeft').innerHTML = htmlLeft;
+document.querySelector('.paginationButtonRight').innerHTML = htmlRight;
+
+  }
+  
+
+};
+
+pagination.addEventListener('click', function(e){
+  const btn = e.target.closest('.paginationButton');
+  console.log(btn.dataset.page);
+  currentPage = +btn.dataset.page;
+  controlPagination();
+})
 
 
 const init = function(){
